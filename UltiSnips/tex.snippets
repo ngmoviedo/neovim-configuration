@@ -1,0 +1,186 @@
+# Custom LaTeX snippets #
+# Mostly taken from https://castel.dev/post/lecture-notes-1/
+
+# Displaying math
+#snippet $ "Math" wA
+#$${1}$`!p
+#if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+#    snip.rv = ' '
+#else:
+#    snip.rv = ''
+#`$0
+#endsnippet
+#
+#snippet dm "Math" wA
+#\[
+#$1
+#.\] $0
+#endsnippet
+
+# Parenthesis and brackets
+#snippet \( "Scalable parenthesis" iA
+#\left(${1}\right)$0
+#endsnippet
+#
+#snippet \[ "Scalable bracket" iA
+#\left[${1}\right]$0
+#endsnippet
+#
+#snippet \{ "Scalable curly bracket" iA
+#\left{${1}\right}$0
+#endsnippet
+
+
+# Fractions 
+#// 	→ 	\frac{}{}
+#3/ 	→ 	\frac{3}{}
+#4\pi^2/ 	→ 	\frac{4\pi^2}{}
+#(1 + 2 + 3)/ 	→ 	\frac{1 + 2 + 3}{}
+#(1+(2+3)/) 	→ 	(1 + \frac{2+3}{})
+#(1 + (2+3))/ 	→ 	\frac{1 + (2+3)}{}
+
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wr
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+snippet '^.*\)/' "() Fraction" wr
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
+endsnippet
+
+# Subscripts (automatic)
+snippet '([A-Za-z])(\d)' "auto subscript" wr
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wr
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+# Superscripts
+snippet sr "^2" i
+^2
+endsnippet
+
+snippet cb "^3" i
+^3
+endsnippet
+
+snippet ^ "superscript" iA
+^{$1}$0
+endsnippet
+
+# Usual sets (automatic)
+snippet RR "real numbers" iA
+\mathbb{R}
+endsnippet
+
+snippet CC "complex numbers" iA
+\mathbb{C}
+endsnippet
+
+snippet NN "natural numbers" iA
+\mathbb{N}
+endsnippet
+
+snippet ZZ "entire numbers" iA
+\mathbb{Z}
+endsnippet
+
+snippet QQ "rational numbers" iA
+\mathbb{Q}
+endsnippet
+
+snippet L1R "L1(R) set" iA
+\bm{L}^1({\mathbb{R}})
+endsnippet
+
+snippet L2R "L2(R) set" iA
+\bm{L}^2({\mathbb{R}})
+endsnippet
+
+snippet L2i "L2([a,b]) set" iA
+\bm{L}^2(\[${1:a},${2:b}\])$0
+endsnippet
+
+snippet l2R "l2(R) set" iA
+\ell^2({\mathbb{R}})
+endsnippet
+
+snippet l2i "l2([a,b]) set" iA
+\ell^2(\[${1:a},${2:b}\])$0
+endsnippet
+
+# Usual symbols
+snippet int "definite integral" i
+\int_{${1:a}}^{${2:b}}$0
+endsnippet
+
+snippet Int "infinite integral" i
+\int_{-\infty}^{+\infty}
+endsnippet
+
+snippet sum "finite sum" i
+\sum_{${1:k}=${2:a}}^{${3:b}}$0
+endsnippet
+
+snippet Sum "infinite sum" i
+\sum_{${1:k}=-\infty}^{+\infty}$0
+endsnippet
+
+snippet lim "limit" i
+\lim_{${1:x}\to${2:0}}$0
+endsnippet
+
+snippet 'hat(\w)' "hat" riA
+\\widehat{`!p snip.rv = match.group(1)`}
+endsnippet
+
+snippet oo "infinite" i
+\infty
+endsnippet
+
+snippet \< "scalar product angles" iA
+\left\langle $1\right\rangle$0
+endsnippet
+
+snippet \| "norm" iA
+\|$1\|$0
+endsnippet
+
+# leq and geq
+snippet <= "less or equal" iA
+\leq
+endsnippet
+
+snippet >= "more or equal" iA
+\geq
+endsnippet
+
+# Adjustable brackets 
+snippet \[ "adjustable bracket" iA
+\left[$1\right]$0
+endsnippet
+
+snippet \{ "adjustable curly braces" iA
+\left\\{$1\right\\}$0
+endsnippet
+
+snippet \( "adjustable parenthesis" iA
+\left($1\right)$0
+endsnippet
+
+
