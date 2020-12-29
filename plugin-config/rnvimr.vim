@@ -4,3 +4,4 @@ let g:rnvimr_enable_picker=1
 nnoremap <silent> <F2> :RnvimrToggle<CR>
 tnoremap <silent> <F2> <C-\><C-n>:RnvimrToggle<CR>
 
+let g:rnvimr_enable_ex=1

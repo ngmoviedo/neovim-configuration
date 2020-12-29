@@ -14,7 +14,7 @@ Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
 " MATLAB edition 
-Plug 'vim-plugin-config/MatlabFilesEdition', {'for': 'matlab'}
+Plug 'vim-scripts/MatlabFilesEdition', {'for': 'matlab'}
 
 " Pandoc edition
 Plug 'vim-pandoc/vim-pandoc', {'for': 'pandoc'}
@@ -45,11 +45,10 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Distraction free edition
 Plug 'junegunn/goyo.vim'
-Plug 'TaDaa/vimade'
+"Plug 'TaDaa/vimade'
 
-" File manager (netrw, ranger and NERDTree) improvements
+" File manager (netrw) improvements
 Plug 'tpope/vim-vinegar'
-Plug 'kevinhwang91/rnvimr'
 
 " Color schemes and status bar
 "Plug 'sainnhe/gruvbox-material'

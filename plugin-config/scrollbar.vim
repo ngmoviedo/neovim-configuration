@@ -7,3 +7,11 @@ augroup end
 
 " Disable for file explorers
 let g:scrollbar_excluded_filetypes = ['coc-explorer', 'netrw']
+
+" Remove arrows
+let g:scrollbar_shape = {
+\ 'head': '',
+\ 'body': '█',
+\ 'tail': '',
+\ }
+
