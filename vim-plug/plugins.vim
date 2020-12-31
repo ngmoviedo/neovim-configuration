@@ -45,7 +45,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Distraction free edition
 Plug 'junegunn/goyo.vim'
-"Plug 'TaDaa/vimade'
+Plug 'TaDaa/vimade'
 
 " File manager (netrw) improvements
 Plug 'tpope/vim-vinegar'
