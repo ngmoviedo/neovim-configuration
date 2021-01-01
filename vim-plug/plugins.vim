@@ -45,7 +45,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Distraction free edition
 Plug 'junegunn/goyo.vim'
-"Plug 'TaDaa/vimade'
+Plug 'TaDaa/vimade'
 
 " File manager (netrw) improvements
 Plug 'tpope/vim-vinegar'
@@ -67,7 +67,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'norcalli/nvim-colorizer.lua'
 
 " Scrollbar
-Plug 'Xuyuanp/scrollbar.nvim'
+"Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'psliwka/vim-smoothie'
 
 " Initialize plugin system
 call plug#end()

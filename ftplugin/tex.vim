@@ -17,6 +17,9 @@ let b:ale_linters = ['lacheck']
 let b:ale_fixers = ['latexindent', 'remove_trailing_lines', 'trim_whitespace']
 
 " Concealment
+let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
+let g:tex_conceal_frac=1
 set conceallevel=2
 let g:tex_conceal = 'abdmg'
 augroup vimrc " Only in normal mode
