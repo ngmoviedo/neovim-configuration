@@ -1,3 +1,4 @@
+if !exists("g:vscode")
 "Plugins
 source ~/.config/nvim/vim-plug/plugins.vim
 
@@ -27,3 +28,13 @@ source ~/.config/nvim/plugin-config/goyo.vim
 "source ~/.config/nvim/plugin-config/scrollbar.vim
 " lua plugins
 lua require('plugin-config.colorizer')
+
+else
+    " Plugin configuration
+    source ~/.config/nvim/vscodium/vim-plug/plugins.vim    
+    " Easymotion
+    source ~/.config/nvim/plugin-config/easymotion.vim
+    " Vim commentary
+    source ~/.config/nvim/vscodium/settings/commentary.vim
+
+end
