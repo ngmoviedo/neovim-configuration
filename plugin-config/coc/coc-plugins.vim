@@ -6,6 +6,7 @@ let g:coc_global_extensions = [
 	\ 'coc-highlight',
 	\ 'coc-jedi',
 	\ 'coc-json',
+	\ 'coc-markdownlint',
 	\ 'coc-marketplace',
 	\ 'coc-lua',
 	\ 'coc-sh',
