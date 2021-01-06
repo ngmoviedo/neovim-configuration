@@ -26,7 +26,7 @@ Plug 'dag/vim-fish', {'for': 'fish'}
 " Autocompletion, linting and snippets
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 
 " Pair matching and autoclose tools
 Plug 'tpope/vim-surround'
@@ -63,11 +63,7 @@ Plug 'voldikss/vim-floaterm'
 " Git integration
 Plug 'tpope/vim-fugitive'
 
-" Colorizer
-Plug 'norcalli/nvim-colorizer.lua'
-
 " Scrollbar
-"Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'psliwka/vim-smoothie'
 
 " Initialize plugin system

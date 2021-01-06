@@ -1,6 +1,6 @@
 {
 	// ALE compatibility
-	"diagnostic.displayByAle": true,
+	//"diagnostic.displayByAle": true,
 
 	// python
 	"jedi.startupMessage": false,
