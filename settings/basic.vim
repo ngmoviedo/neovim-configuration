@@ -11,6 +11,7 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 set scrolloff=1		" Always show at least one line above/below the cursor.
+set inccommand=nosplit  " Live preview for substitutions.
 
 " Fix for kitty terminal
 let &t_ut=''

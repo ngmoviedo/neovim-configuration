@@ -11,7 +11,7 @@ Plug 'mhinz/vim-startify'
 
 " LaTeX edition
 Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+" Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
 " MATLAB edition 
 Plug 'vim-scripts/MatlabFilesEdition', {'for': 'matlab'}
@@ -38,9 +38,9 @@ Plug 'tpope/vim-commentary'
 " Repeat plugin actions
 Plug 'tpope/vim-repeat'
 
-" Comfortable motions, visual substitutions and line numering
+" Comfortable motions, and line numering
 Plug 'easymotion/vim-easymotion'
-Plug 'osyo-manga/vim-over'
+" Plug 'osyo-manga/vim-over'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Distraction free edition
