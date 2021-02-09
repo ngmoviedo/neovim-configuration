@@ -4,7 +4,6 @@ let g:coc_global_extensions = [
 	\ 'coc-fish',
 	\ 'coc-floaterm',
 	\ 'coc-highlight',
-	\ 'coc-jedi',
 	\ 'coc-json',
 	\ 'coc-markdownlint',
 	\ 'coc-marketplace',
