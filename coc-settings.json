@@ -3,12 +3,12 @@
 	//"diagnostic.displayByAle": true,
 
 	// python
-	"jedi.startupMessage": false,
+	//"jedi.startupMessage": false,
 
 	// explorer
 	"explorer.width": 25,
 	"explorer.icon.enableNerdfont": true,
 	"explorer.file.showHiddenFiles": true,
-  "explorer.previewAction.onHover": "labeling",
-  "coc.preferences.extensionUpdateCheck": "daily"
+	"explorer.previewAction.onHover": "labeling",
+	"coc.preferences.extensionUpdateCheck": "daily"
 }
