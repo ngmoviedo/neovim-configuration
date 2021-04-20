@@ -5,6 +5,9 @@
 	// python
 	//"jedi.startupMessage": false,
 
+	// make vim select first item on completion
+        "suggest.noselect": false,
+
 	// explorer
 	"explorer.width": 25,
 	"explorer.icon.enableNerdfont": true,

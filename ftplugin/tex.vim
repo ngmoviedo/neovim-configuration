@@ -12,9 +12,8 @@ setlocal spell spelllang=es
 setlocal spellfile=~/.config/nvim/spell/es.utf-8.add
 setlocal dictionary=/usr/share/dict/spanish
 
-"Linting
-let b:ale_linters = ['lacheck']
-let b:ale_fixers = ['latexindent', 'remove_trailing_lines', 'trim_whitespace']
+" Show documentation
+map <buffer> K <Plug>(vimtex-doc-package)
 
 " Concealment
 let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
