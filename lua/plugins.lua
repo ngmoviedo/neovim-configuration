@@ -7,23 +7,23 @@ paq{'savq/paq-nvim', opt=true}     -- Let Paq manage itself
 paq 'mhinz/vim-startify'
 
 -- LaTeX edition
-paq {'lervag/vimtex', opt=true}
+paq 'lervag/vimtex'
 
--- MATLAB edition 
-paq {'vim-scripts/MatlabFilesEdition', opt=true}
+-- MATLAB edition
+paq 'vim-scripts/MatlabFilesEdition'
 
 -- Pandoc edition
-paq {'vim-pandoc/vim-pandoc', opt=true}
-paq {'vim-pandoc/vim-pandoc-syntax', opt=true}
+paq 'vim-pandoc/vim-pandoc'
+paq 'vim-pandoc/vim-pandoc-syntax'
 
 -- Fish syntax highlighting
-paq {'dag/vim-fish', opt=true}
+paq 'dag/vim-fish'
 
 -- Autocompletion, linting and snippets
 paq {'neoclide/coc.nvim', branch='release'}
-paq {'rafcamlet/coc-nvim-lua', opt=true}
+paq 'rafcamlet/coc-nvim-lua'
 paq 'honza/vim-snippets'
-paq {'nvim-treesitter/nvim-treesitter'}  -- We recommend updating the parsers on update
+paq 'nvim-treesitter/nvim-treesitter'  -- We recommend updating the parsers on update
 
 -- Pair matching and autoclose tools
 paq 'tpope/vim-surround'

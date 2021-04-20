@@ -1,7 +1,4 @@
 {
-	// ALE compatibility
-	//"diagnostic.displayByAle": true,
-
 	// python
 	//"jedi.startupMessage": false,
 
