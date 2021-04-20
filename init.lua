@@ -1,5 +1,4 @@
 -- Plugins
--- vim.cmd 'source ~/.config/nvim/vim-plug/plugins.vim'
 require('plugins')
 
 -- Settings
@@ -9,15 +8,16 @@ require('settings.indent')
 -- vim.cmd 'source ~/.config/nvim/settings/spelling.vim' -- Not necessary with treesitter
 
 -- Custom commands
-vim.cmd 'source ~/.config/nvim/commands/terminal.vim' -- Makes sense as vim script
+require('commands.terminal')
 require('commands.substitutions')
 
 -- Theme (colorscheme and font)
 require('theme.colorscheme')
 
 -- Plugin configuration
-require('plugin-config.coc.coc')
-require('plugin-config/numbertoggle')
+require('plugin-config.coc-settings')
+require('plugin-config.coc-explorer')
+require('plugin-config.numbertoggle')
 require('plugin-config.netrw')
 require('plugin-config.floaterm')
 require('plugin-config.easymotion')
