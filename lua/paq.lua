@@ -23,7 +23,7 @@ paq 'dag/vim-fish'
 paq {'neoclide/coc.nvim', branch='release'}
 paq 'rafcamlet/coc-nvim-lua'
 paq 'honza/vim-snippets'
-paq 'nvim-treesitter/nvim-treesitter'  -- We recommend updating the parsers on update
+paq {'nvim-treesitter/nvim-treesitter', run=vim.fn['TSUpdate']}  -- We recommend updating the parsers on update
 
 -- Pair matching and autoclose tools
 paq 'tpope/vim-surround'
@@ -48,9 +48,12 @@ paq 'tpope/vim-vinegar'
 
 -- Color schemes and status bar
 paq {'dracula/vim', as='dracula'}
-paq 'vim-airline/vim-airline'
-paq 'vim-airline/vim-airline-themes'
+-- paq 'vim-airline/vim-airline'
+-- paq 'vim-airline/vim-airline-themes'
+paq 'hoob3rt/lualine.nvim'
+paq 'kyazdani42/nvim-web-devicons'
 paq 'ryanoasis/vim-devicons'
+paq 'akinsho/nvim-bufferline.lua'
 
 -- Floating terminal
 paq 'voldikss/vim-floaterm'

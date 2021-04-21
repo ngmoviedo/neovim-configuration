@@ -6,6 +6,7 @@ vim.g.coc_global_extensions =[[
 	 'coc-floaterm',
 	 'coc-highlight',
 	 'coc-json',
+	 'coc-lua',
 	 'coc-markdownlint',
 	 'coc-marketplace',
 	 'coc-sh',
@@ -47,7 +48,4 @@ vim.o.statusline = vim.o.statusline .. '%{coc#status()}'
 -- Autocompletion and snippets
 -- -----------------------------------------------------------------------
 -- Use <tab> to trigger completion, completion confirm, snippet expand and jump like VSCode.
-vim.cmd('source ./coc-autocomplete.vim')
-
--- Explorer
-require('plugin-config.coc.coc-explorer')
+vim.cmd('source ~/.config/nvim/coc-autocomplete.vim')
