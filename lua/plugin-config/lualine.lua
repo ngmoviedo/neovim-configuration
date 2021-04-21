@@ -5,7 +5,7 @@ sections = {
   lualine_a = {'mode'},
   lualine_b = {'branch', 'diff'},
   lualine_c = {
-	{'diagnostics', sources={'coc'}, color_warn='#ffb86c'},
+	{'diagnostics', sources={'nvim_lsp'}, color_warn='#ffb86c'},
 	-- Displays filename only when window is wider then 80
 	{'filename', condition=function() return vim.fn.winwidth(0) > 80 end}
 			},

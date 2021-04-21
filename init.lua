@@ -1,10 +1,14 @@
 -- Plugins
-require('paq')
+--require('paq')
+vim.cmd('source ~/.config/nvim/plug.vim')
 
 -- Settings
 require('settings.basic')
 require('settings.clipboard')
 require('settings.indent')
+
+-- LSP
+require('lsp')
 
 -- Custom commands
 require('commands.terminal')
@@ -14,8 +18,8 @@ require('commands.substitutions')
 require('theme.colorscheme')
 
 -- Plugin configuration
-require('plugin-config.coc-settings')
-require('plugin-config.coc-explorer')
+-- require('plugin-config.coc-settings')
+-- require('plugin-config.coc-explorer')
 require('plugin-config.numbertoggle')
 require('plugin-config.netrw')
 require('plugin-config.floaterm')
