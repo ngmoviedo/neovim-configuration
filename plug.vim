@@ -61,6 +61,7 @@ Plug 'voldikss/vim-floaterm'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 
 " Scrolling
 Plug 'psliwka/vim-smoothie'
