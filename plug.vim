@@ -27,6 +27,7 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'} " Will become the default when neovim 0.5 is released as stable
 
 " Pair matching and autoclose tools
 Plug 'tpope/vim-surround'

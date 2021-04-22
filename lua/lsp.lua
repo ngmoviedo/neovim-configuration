@@ -24,9 +24,7 @@ require'lspconfig'.jedi_language_server.setup{capabilities=capabilities}
 require'lspconfig'.vimls.setup{capabilities=capabilities}
 
 -- Lua
-  print("Unsupported system for sumneko")
-
--- set the path to the sumneko installation
+--- set the path to the sumneko installation
 local sumneko_root_path = '/usr/share/lua-language-server'
 local sumneko_binary = '/usr/bin/lua-language-server'
 
@@ -91,10 +89,9 @@ require'compe'.setup {
 
 local keymap=vim.api.nvim_set_keymap
 keymap('i', '<C-Space>', [[compe#complete()]], {noremap=true, silent=true, expr=true})
-keymap('i', '<C-right>', [[compe#confirm('<C-right>')]], {noremap=true, silent=true, expr=true})
-keymap('i', '<C-e>', [[compe#close('<C-e>')]], {noremap=true, silent=true, expr=true})
 -- Make compe#complete compatible with pear-tree
--- vim.cmd([[imap <expr> <CR> pumvisible() ? compe#confirm() : "\<Plug>(PearTreeExpand)"]])
+keymap('i', '<CR>', [[compe#confirm({ 'keys': "\<Plug>(PearTreeExpand)", 'mode': '' })]], {noremap=true, silent=true, expr=true})
+keymap('i', '<C-e>', [[compe#close('<C-e>')]], {noremap=true, silent=true, expr=true})
 
 -- Disable all of UltiSnip's default mappings
 vim.g.UltiSnipsExpandTrigger = "<NUL>"
@@ -119,7 +116,7 @@ end
 --- move to prev/next item in completion menu
 --- jump to the prev/next snippet placeholder
 --- insert a simple tab
---- start the completion menu
+--- cycle through the completion menu
 _G.tab_completion = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
