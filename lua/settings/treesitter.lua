@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+﻿require'nvim-treesitter.configs'.setup {
 	ensure_installed = { "latex","bash","lua","python" },
 	highlight = {
 		enable = true,
@@ -11,3 +11,6 @@ require'nvim-treesitter.configs'.setup {
 		enable = true
 	},
 }
+
+-- Vimade compatibility (experimental)
+vim.g.vimade = {enabletreesitter = 1}

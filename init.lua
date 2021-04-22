@@ -1,31 +1,25 @@
 -- Plugins
---require('paq')
 vim.cmd('source ~/.config/nvim/plug.vim')
 
--- Settings
+-- Main settings
 require('settings.basic')
 require('settings.clipboard')
 require('settings.indent')
+require('settings.netrw')
+require('settings.terminal')
+require('settings.treesitter')
+require('settings.compe')
+require('settings.lsp')
 
--- LSP
-require('lsp')
-
--- Custom commands
-require('commands.terminal')
-require('commands.substitutions')
+-- Custom mappings
+require('mappings.terminal')
+require('mappings.substitutions')
+require('mappings.completion')
+require('mappings.numbertoggle')
+require('mappings.easymotion')
 
 -- Theme (colorscheme and font)
 require('theme.colorscheme')
-
--- Plugin configuration
--- require('plugin-config.coc-settings')
--- require('plugin-config.coc-explorer')
-require('plugin-config.numbertoggle')
-require('plugin-config.netrw')
-require('plugin-config.floaterm')
-require('plugin-config.easymotion')
-require('plugin-config.lualine')
-require('plugin-config.goyo')
-require('plugin-config.treesitter')
-require('plugin-config.bufferline')
+require('theme.lualine')
+require('theme.bufferline')
 
