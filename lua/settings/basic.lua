@@ -15,10 +15,12 @@ set('mouse','a')
 set('scrolloff',1)
 -- Live preview for substitutions
 set('inccommand','nosplit')
+-- Decrease update time for signify's async update
+set('updatetime',100)
 
 -- Jump to the last position when reopening
 vim.api.nvim_exec(
 [[
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-]], 
+]],
 false)
