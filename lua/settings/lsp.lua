@@ -58,3 +58,6 @@ require'lspconfig'.sumneko_lua.setup {
   },
 }
 
+
+-- Pictograms
+require('lspkind').init()

@@ -3,6 +3,7 @@ vim.g.UltiSnipsExpandTrigger = "<NUL>"
 vim.g.UltiSnipsListSnippets = "<NUL>"
 vim.g.UltiSnipsJumpForwardTrigger = "<NUL>"
 vim.g.UltiSnipsJumpBackwardTrigger = "<NUL>"
+
 local keymap=vim.api.nvim_set_keymap
 
 -- Compe (autocompletion) mappings
@@ -10,9 +11,6 @@ keymap('i', '<C-Space>', [[compe#complete()]], {noremap=true, silent=true, expr=
 -- Make compe#complete compatible with pear-tree
 keymap('i', '<CR>', [[compe#confirm({ 'keys': "\<Plug>(PearTreeExpand)", 'mode': '' })]], {noremap=true, silent=true, expr=true})
 keymap('i', '<C-e>', [[compe#close('<C-e>')]], {noremap=true, silent=true, expr=true})
-
-
-
 
 -- Use (shift-)tab to:
 --- move to prev/next item in completion menu

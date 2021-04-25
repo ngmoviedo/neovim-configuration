@@ -17,7 +17,7 @@ require('mappings.substitutions')
 require('mappings.completion')
 require('mappings.numbertoggle')
 require('mappings.easymotion')
-vim.cmd('source ~/.config/nvim/lua/mappings/netrw.vim')
+require('mappings.netrw')
 
 -- Theme (colorscheme and font)
 require('theme.colorscheme')
