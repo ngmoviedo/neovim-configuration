@@ -17,6 +17,10 @@ set('scrolloff',1)
 set('inccommand','nosplit')
 -- Decrease update time for signify's async update
 set('updatetime',100)
+-- Indentation (4 spaces)
+vim.api.nvim_buf_set_option(0,'tabstop',4) -- These are buffer-local options
+vim.api.nvim_buf_set_option(0,'shiftwidth',4)
+vim.api.nvim_buf_set_option(0,'expandtab',true)
 
 -- Jump to the last position when reopening
 vim.api.nvim_exec(

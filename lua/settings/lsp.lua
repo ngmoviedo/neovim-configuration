@@ -17,7 +17,7 @@ require'lspconfig'.texlab.setup{capabilities=capabilities}
 -- bash
 require'lspconfig'.bashls.setup{capabilities=capabilities}
 
--- pyright
+-- Jedi language server
 require'lspconfig'.jedi_language_server.setup{capabilities=capabilities}
 
 -- vimls
@@ -58,6 +58,13 @@ require'lspconfig'.sumneko_lua.setup {
   },
 }
 
+-- Linters (efm-lang-server)
+require "lspconfig".efm.setup {
+    init_options = {
+        documentFormatting = true,
+        },
+    filetypes = {'matlab','fish'},
+}
 
 -- Pictograms
 require('lspkind').init()
