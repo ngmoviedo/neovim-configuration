@@ -66,9 +66,6 @@ require "lspconfig".efm.setup {
     filetypes = {'matlab','fish'},
 }
 
--- Pictograms
-require('lspkind').init()
-
 -- Diagnostic signs
 vim.fn.sign_define("LspDiagnosticsSignError",
     {text = ' '})

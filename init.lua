@@ -1,5 +1,6 @@
 -- Plugins
-vim.cmd('source ~/.config/nvim/plug.vim')
+-- vim.cmd('source ~/.config/nvim/plug.vim')
+require('plugins')
 
 -- Main settings
 require('settings.basic')
@@ -10,7 +11,6 @@ require('settings.terminal')
 require('settings.treesitter')
 require('settings.compe')
 require('settings.lsp')
-require('settings.git')
 require('settings.autopairs')
 
 -- Custom mappings
