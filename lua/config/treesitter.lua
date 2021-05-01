@@ -10,6 +10,9 @@
 	indent = {
 		enable = true
 	},
+	autopairs = {
+		enable = true
+	}
 }
 
 -- Vimade compatibility (experimental)

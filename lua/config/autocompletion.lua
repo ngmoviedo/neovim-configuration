@@ -1,3 +1,67 @@
+-- Autocompletion (compe)
+vim.o.completeopt = "menuone,noselect"
+
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    ultisnips = true;
+    treesitter =true;
+  };
+}
+
+-- Autopairs
+require('nvim-autopairs').setup()
+
+local Rule = require('nvim-autopairs.rule')
+local cond = require('nvim-autopairs.conds')
+local npairs = require('nvim-autopairs')
+
+-- LaTeX
+--- Compatibility with snippets
+npairs.get_rule('(')
+    :with_pair(cond.not_before_regex_check("\\"))
+
+npairs.get_rule('[')
+    :with_pair(cond.not_before_regex_check("\\"))
+
+npairs.get_rule('{')
+    :with_pair(cond.not_before_regex_check("\\"))
+
+--- Specific pairs
+npairs.add_rules({
+    Rule("$", "$",{"tex", "latex", "pandoc", "markdown"}),
+    Rule('\\left(','\\right)',{"tex", "latex"}),
+    Rule('\\left[','\\right]',{"tex", "latex"}),
+    Rule('\\left\\{','\\right\\}',{"tex", "latex"}),
+    Rule('\\left\\langle','\\right\\rangle',{"tex", "latex"}),
+    Rule('\\langle','\\rangle',{"tex", "latex"}),
+    Rule('*','*',{"pandoc","markdown"})
+})
+
+-- Treesitter
+npairs.setup({
+    check_ts = true,
+})
+
+-- Mappings
 -- Disable all of UltiSnip's default mappings
 vim.g.UltiSnipsExpandTrigger = "<NUL>"
 vim.g.UltiSnipsListSnippets = "<NUL>"
@@ -14,7 +78,6 @@ keymap('i', '<C-e>', [[compe#close('<C-e>')]], {noremap=true, silent=true, expr=
 -- Make compe#complete compatible with pear-tree
 -- keymap('i', '<CR>', [[compe#confirm({ 'keys': "\<Plug>(PearTreeExpand)", 'mode': '' })]], {noremap=true, silent=true, expr=true})
 -- Make compe compatible with autopairs
-local npairs = require('nvim-autopairs')
 
 _G.MUtils= {}
 
@@ -78,4 +141,3 @@ keymap('i', "<Tab>", 'v:lua.tab_completion()', {expr = true})
 keymap('s', "<Tab>", 'v:lua.tab_completion()', {expr = true})
 keymap('i', "<S-Tab>", 'v:lua.shift_tab_completion()', {expr = true})
 keymap('s', "<S-Tab>", 'v:lua.shift_tab_completion()', {expr = true})
-

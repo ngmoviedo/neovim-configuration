@@ -72,8 +72,9 @@ time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
   MatlabFilesEdition = {
-    loaded = true,
-    path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/MatlabFilesEdition"
+    loaded = false,
+    needs_bufread = true,
+    path = "/home/nicolas/.local/share/nvim/site/pack/packer/opt/MatlabFilesEdition"
   },
   dracula = {
     loaded = true,
@@ -85,41 +86,48 @@ _G.packer_plugins = {
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   ["indent-blankline.nvim"] = {
+    config = { "require('config.indent')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
-  ["lspkind-nvim"] = {
-    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\flspkind\frequire\0" },
-    loaded = true,
-    path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
-  },
   ["lualine.nvim"] = {
+    config = { "require('config.lualine')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+  },
+  ["neoscroll.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14neoscroll\frequire\0" },
+    loaded = true,
+    path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/neoscroll.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-bufferline.lua"] = {
+    config = { "require('config.bufferline')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-compe"] = {
+    config = { "require('config.autocompletion')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
+    config = { "require('config.lsp')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
+    config = { "require('config.treesitter')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/nicolas/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -137,16 +145,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
-  ["vim-easymotion"] = {
-    loaded = true,
-    path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-easymotion"
-  },
   ["vim-fish"] = {
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-fish"
   },
   ["vim-floaterm"] = {
+    config = { "require('config.floaterm')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-floaterm"
   },
@@ -156,25 +161,32 @@ _G.packer_plugins = {
   },
   ["vim-matlab-behave"] = {
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-matlab-behave"
   },
   ["vim-numbertoggle"] = {
+    config = { "require('config.numbertoggle')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-numbertoggle"
   },
   ["vim-pandoc"] = {
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-pandoc"
   },
   ["vim-pandoc-syntax"] = {
-    loaded = true,
-    path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-pandoc-syntax"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-pandoc-syntax"
   },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-repeat"
+  },
+  ["vim-sneak"] = {
+    config = { "require('config.sneak')" },
+    loaded = true,
+    path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-sneak"
   },
   ["vim-snippets"] = {
     loaded = true,
@@ -189,6 +201,7 @@ _G.packer_plugins = {
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-vinegar"] = {
+    config = { "require('config.netrw')" },
     loaded = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/start/vim-vinegar"
   },
@@ -198,20 +211,60 @@ _G.packer_plugins = {
   },
   vimtex = {
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     path = "/home/nicolas/.local/share/nvim/site/pack/packer/opt/vimtex"
   }
 }
 
 time("Defining packer_plugins", false)
--- Config for: lspkind-nvim
-time("Config for lspkind-nvim", true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\flspkind\frequire\0", "config", "lspkind-nvim")
-time("Config for lspkind-nvim", false)
 -- Config for: gitsigns.nvim
 time("Config for gitsigns.nvim", true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time("Config for gitsigns.nvim", false)
+-- Config for: nvim-lspconfig
+time("Config for nvim-lspconfig", true)
+require('config.lsp')
+time("Config for nvim-lspconfig", false)
+-- Config for: nvim-bufferline.lua
+time("Config for nvim-bufferline.lua", true)
+require('config.bufferline')
+time("Config for nvim-bufferline.lua", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+require('config.autocompletion')
+time("Config for nvim-compe", false)
+-- Config for: neoscroll.nvim
+time("Config for neoscroll.nvim", true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14neoscroll\frequire\0", "config", "neoscroll.nvim")
+time("Config for neoscroll.nvim", false)
+-- Config for: vim-numbertoggle
+time("Config for vim-numbertoggle", true)
+require('config.numbertoggle')
+time("Config for vim-numbertoggle", false)
+-- Config for: nvim-treesitter
+time("Config for nvim-treesitter", true)
+require('config.treesitter')
+time("Config for nvim-treesitter", false)
+-- Config for: vim-sneak
+time("Config for vim-sneak", true)
+require('config.sneak')
+time("Config for vim-sneak", false)
+-- Config for: vim-floaterm
+time("Config for vim-floaterm", true)
+require('config.floaterm')
+time("Config for vim-floaterm", false)
+-- Config for: vim-vinegar
+time("Config for vim-vinegar", true)
+require('config.netrw')
+time("Config for vim-vinegar", false)
+-- Config for: lualine.nvim
+time("Config for lualine.nvim", true)
+require('config.lualine')
+time("Config for lualine.nvim", false)
+-- Config for: indent-blankline.nvim
+time("Config for indent-blankline.nvim", true)
+require('config.indent')
+time("Config for indent-blankline.nvim", false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
@@ -223,6 +276,17 @@ vim.cmd [[au FileType latex ++once lua require("packer.load")({'vimtex'}, { ft =
 vim.cmd [[au FileType fish ++once lua require("packer.load")({'vim-fish'}, { ft = "fish" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tex ++once lua require("packer.load")({'vimtex'}, { ft = "tex" }, _G.packer_plugins)]]
 time("Defining lazy-load filetype autocommands", false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time("Sourcing ftdetect script at: /home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-pandoc/ftdetect/pandoc.vim", true)
+vim.cmd [[source /home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-pandoc/ftdetect/pandoc.vim]]
+time("Sourcing ftdetect script at: /home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-pandoc/ftdetect/pandoc.vim", false)
+time("Sourcing ftdetect script at: /home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-fish/ftdetect/fish.vim", true)
+vim.cmd [[source /home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-fish/ftdetect/fish.vim]]
+time("Sourcing ftdetect script at: /home/nicolas/.local/share/nvim/site/pack/packer/opt/vim-fish/ftdetect/fish.vim", false)
+time("Sourcing ftdetect script at: /home/nicolas/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim", true)
+vim.cmd [[source /home/nicolas/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim]]
+time("Sourcing ftdetect script at: /home/nicolas/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tex.vim", false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
