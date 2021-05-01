@@ -1,5 +1,8 @@
 " MATLAB code checker
-autocmd BufEnter *.m compiler mlint -id
+autocmd BufEnter *.m compiler mlint
+
+" Set commentary string
+setlocal commentstring=\%\ %s
 
 " vim_matlab_behave options
 let g:matlab_behave_autoexec=1

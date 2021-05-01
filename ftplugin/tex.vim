@@ -28,19 +28,19 @@ augroup vimrc " Only in normal mode
 augroup END
 
 " Autoclose
-let g:pear_tree_pairs = {
-            \ '(': {'closer': ')', 'not_at':['\\']},
-            \ '[': {'closer': ']', 'not_at':['\\']},
-            \ '{': {'closer': '}', 'not_at':['\\']},
-            \ "'": {'closer': "'"},
-            \ '"': {'closer': '"'},
-            \ '$': {'closer': '$'},
-            \ '\\left(': {'closer': '\\right)'},
-            \ '\\left[': {'closer': '\\right]'},
-            \ '\\left\\{': {'closer': '\\right\\}'},
-            \ '\\left\\langle': {'closer': '\\right\\rangle'},
-            \ '\\langle': {'closer': '\\rangle'}
-            \ }
+" let g:pear_tree_pairs = {
+"             \ '(': {'closer': ')', 'not_at':['\\']},
+"             \ '[': {'closer': ']', 'not_at':['\\']},
+"             \ '{': {'closer': '}', 'not_at':['\\']},
+"             \ "'": {'closer': "'"},
+"             \ '"': {'closer': '"'},
+"             \ '$': {'closer': '$'},
+"             \ '\\left(': {'closer': '\\right)'},
+"             \ '\\left[': {'closer': '\\right]'},
+"             \ '\\left\\{': {'closer': '\\right\\}'},
+"             \ '\\left\\langle': {'closer': '\\right\\rangle'},
+"             \ '\\langle': {'closer': '\\rangle'}
+"             \ }
 
 " Shortcuts
 nmap <F4> <plug>(vimtex-view)

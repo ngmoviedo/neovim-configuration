@@ -10,6 +10,8 @@ require('settings.terminal')
 require('settings.treesitter')
 require('settings.compe')
 require('settings.lsp')
+require('settings.git')
+require('settings.autopairs')
 
 -- Custom mappings
 require('mappings.terminal')
@@ -23,4 +25,3 @@ require('mappings.netrw')
 require('theme.colorscheme')
 require('theme.lualine')
 require('theme.bufferline')
-

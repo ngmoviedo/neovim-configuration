@@ -8,9 +8,30 @@ local keymap=vim.api.nvim_set_keymap
 
 -- Compe (autocompletion) mappings
 keymap('i', '<C-Space>', [[compe#complete()]], {noremap=true, silent=true, expr=true})
--- Make compe#complete compatible with pear-tree
-keymap('i', '<CR>', [[compe#confirm({ 'keys': "\<Plug>(PearTreeExpand)", 'mode': '' })]], {noremap=true, silent=true, expr=true})
+
 keymap('i', '<C-e>', [[compe#close('<C-e>')]], {noremap=true, silent=true, expr=true})
+
+-- Make compe#complete compatible with pear-tree
+-- keymap('i', '<CR>', [[compe#confirm({ 'keys': "\<Plug>(PearTreeExpand)", 'mode': '' })]], {noremap=true, silent=true, expr=true})
+-- Make compe compatible with autopairs
+local npairs = require('nvim-autopairs')
+
+_G.MUtils= {}
+
+vim.g.completion_confirm_key = ""
+MUtils.completion_confirm=function()
+  if vim.fn.pumvisible() ~= 0  then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+    else
+      return npairs.esc("<cr>")
+    end
+  else
+    return npairs.autopairs_cr()
+  end
+end
+
+keymap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
 
 -- Use (shift-)tab to:
 --- move to prev/next item in completion menu

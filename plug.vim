@@ -13,10 +13,6 @@ Plug 'lervag/vimtex', {'for': 'tex'}
 
 " MATLAB edition 
 Plug 'vim-scripts/MatlabFilesEdition', {'for': 'matlab'}
-" function! DoRemote(arg)
-"   UpdateRemotePlugins
-" endfunction
-" Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
 Plug 'ebranlard/vim-matlab-behave', {'for': 'matlab'}
 
 " Pandoc edition
@@ -32,13 +28,15 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'onsails/lspkind-nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Updates the parsers on update
+
+" Indentation
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'} " Will become the default when neovim 0.5 is released as stable
-" Plug 'neomake/neomake', {'for': 'matlab'}
 
 " Pair matching and autoclose tools
 Plug 'tpope/vim-surround'
-Plug 'tmsvg/pear-tree'
+" Plug 'tmsvg/pear-tree'
+Plug 'windwp/nvim-autopairs'
 
 " Comment lines out
 Plug 'tpope/vim-commentary'
@@ -68,7 +66,8 @@ Plug 'voldikss/vim-floaterm'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
+Plug 'nvim-lua/plenary.nvim' " Required by gitsigns
+Plug 'lewis6991/gitsigns.nvim'
 
 " Scrolling
 Plug 'psliwka/vim-smoothie'
