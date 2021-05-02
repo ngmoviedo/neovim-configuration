@@ -6,19 +6,24 @@ return require('packer').startup(function()
     use 'mhinz/vim-startify'
 
     -- LaTeX edition
-    use {'lervag/vimtex', ft = {'tex', 'latex'}}
+    use {
+	'lervag/vimtex',
+	ft = {'tex', 'latex'},
+	config = [[require('config.vimtex')]]
+    }
 
     -- MATLAB edition
     use {
         'ebranlard/vim-matlab-behave',
-        requires = {{'vim-scripts/MatlabFilesEdition', opt = true}},
-        ft = {'matlab'}
+        requires = {{'vim-scripts/MatlabFilesEdition', ft = {'matlab'}}},
+        ft = {'matlab'},
+	    config = [[require('config.matlab_behave')]]
     }
 
     -- Pandoc edition
     use {
         'vim-pandoc/vim-pandoc',
-        requires = {{'vim-pandoc/vim-pandoc-syntax', opt = true}},
+        requires = {{'vim-pandoc/vim-pandoc-syntax', ft = {'pandoc', 'markdown'}}},
         ft = {'pandoc','markdown'}
     }
 
