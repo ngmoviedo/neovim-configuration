@@ -56,11 +56,6 @@ npairs.add_rules({
     Rule('*','*',{"pandoc","markdown"})
 })
 
--- Treesitter
-npairs.setup({
-    check_ts = true,
-})
-
 -- Mappings
 -- Disable all of UltiSnip's default mappings
 vim.g.UltiSnipsExpandTrigger = "<NUL>"
