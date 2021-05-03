@@ -5,12 +5,12 @@ vim.g.tex_flavor = 'latex'
 vim.g.vimtex_view_method = 'zathura'
 
 -- TOC viewer
-vim.api.nvim_buf_set_keymap('', 'º', ':VimtexTocToggle <CR>', {noremap = true, silent = true, expr = true})
+vim.api.nvim_set_keymap('', 'º', ':VimtexTocToggle <CR>', {noremap = true, silent = true})
 
 -- Documentation
-vim.api.nvim_buf_set_keymap('', 'K', '<Plug>(vimtex-doc-package)', {noremap = true, silent = true, expr = true})
+vim.api.nvim_set_keymap('', 'K', ':VimtexDocPackage<CR>', {noremap = true, silent = true})
 
 -- Keymaps
-vim.api.nvim_buf_set_keymap('n', '<F4>', '<plug>(vimtex-view)', {noremap = true, silent = true, expr = true})
-vim.api.nvim_buf_set_keymap('n', '<F5>', '<plug>(vimtex-compile)', {noremap = true, silent = true, expr = true})
-vim.api.nvim_buf_set_keymap('n', '<F6>', '<plug>(vimtex-errors)', {noremap = true, silent = true, expr = true})
+vim.api.nvim_set_keymap('n', '<F4>', ':VimtexView <CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<F5>', ':VimtexCompile <CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<F6>', ':VimtexErrors <CR>', {noremap = true, silent = true})

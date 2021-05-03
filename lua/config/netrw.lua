@@ -25,9 +25,8 @@ ToggleNetrw = function ()
 	end
 end
 
--- vim.api.nvim_set_keymap('', "<F1>", [[:lua ToggleNetrw() <CR>]], {silent = true, expr = true, noremap = true}) -- can't get it to work this way, for some reason
-vim.cmd([[noremap <silent> <F1> :lua ToggleNetrw() <cr>]])
-vim.cmd([[inoremap <silent> <F1> <ESC> :lua ToggleNetrw() <cr>]])
+vim.api.nvim_set_keymap('n', "<F1>", [[:lua ToggleNetrw() <CR>]], {silent = true, noremap = true})
+vim.api.nvim_set_keymap('i', "<F1>", [[<ESC> :lua ToggleNetrw() <CR>]], {silent = true, noremap = true})
 
 -- Close on F1 when inside netrw
 ChangeF1Mapping = function ()
