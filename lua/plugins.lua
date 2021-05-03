@@ -3,13 +3,17 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
     -- Startup page
-    use 'mhinz/vim-startify'
+    use {
+	    'mhinz/vim-startify',
+	    requires = {'kyazdani42/nvim-web-devicons'},
+	    config = [[require('config.startify')]]
+	}
 
     -- LaTeX edition
     use {
-	'lervag/vimtex',
-	ft = {'tex', 'latex'},
-	config = [[require('config.vimtex')]]
+	    'lervag/vimtex',
+	    ft = {'tex', 'latex'},
+	    config = [[require('config.vimtex')]]
     }
 
     -- MATLAB edition
@@ -96,12 +100,13 @@ return require('packer').startup(function()
     -- Status and buffer line
     use {
         'hoob3rt/lualine.nvim',
-        requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
+        requires = {'kyazdani42/nvim-web-devicons'},
         config = [[require('config.lualine')]]
     }
+
     use {
         'akinsho/nvim-bufferline.lua',
-        requires = {{'kyazdani42/nvim-web-devicons'}, opt = true},
+        requires = {'kyazdani42/nvim-web-devicons'},
         config = [[require('config.bufferline')]]
     }
 
