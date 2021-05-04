@@ -32,7 +32,7 @@ return require('packer').startup(function()
     }
 
     -- Fish syntax highlighting
-    use {'dag/vim-fish', ft = {'fish'}}
+    use {'dag/vim-fish', ft = {'fish', 'conf'}} -- neovim detects files with fish extension as config files
 
     -- Autocompletion, lsp, snippets, treesitter...
     use {
