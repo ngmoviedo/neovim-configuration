@@ -134,4 +134,7 @@ return require('packer').startup(function()
         config = function() require('neoscroll').setup() end
     }
 
+    -- Lua utilities
+    use 'tjdevries/astronauta.nvim'
+
 end)

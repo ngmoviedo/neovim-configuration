@@ -1,11 +1,8 @@
 ﻿require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "bash","lua","python","css","typescript","yaml" },
+	ensure_installed = { "bash","lua","latex","python","css","typescript","yaml" },
 	highlight = {
 		enable = true,
-		custom_captures = {
-		-- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-		["foo.bar"] = "Identifier",
-		},
+        disable = {"latex"}, -- no highlighting for latex
 	},
 	indent = {
 		enable = true

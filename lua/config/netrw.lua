@@ -1,12 +1,12 @@
 -- Settings
 vim.g.netrw_liststyle = 3
-vim.g.netrw_browse_split = 4
+vim.g.netrw_browse_split = 0 -- (does not affect the drawer)
 vim.g.netrw_winsize = 10
 vim.g.netrw_altv = 1
 vim.g.netrw_list_hide = [['\(^\|\s\s\)\zs\.\S\+']] -- Hide dot files (unhide with gh)
 
 -- Mappings
--- Toggle netrw on F1
+-- Toggle netrw on F1 (drawer style)
 vim.g.NetrwIsOpen=0
 
 ToggleNetrw = function ()
