@@ -38,12 +38,12 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         config = [[require('config.lsp')]],
-        require = {
-            'onsails/lspkind-nvim', -- icons for lsp classess
-            opt = true,
-            config = function() require('lspkind').init() end
-        }
     }
+
+    use {
+	    'onsails/lspkind-nvim',
+	    config = function() require('lspkind').init() end
+	}
 
     use {
         'hrsh7th/nvim-compe',
@@ -127,6 +127,8 @@ return require('packer').startup(function()
         requires = {'nvim-lua/plenary.nvim'},
         config = function() require('gitsigns').setup() end
     }
+
+    use 'junegunn/fzf'
 
     -- Smooth scrolling
     use {
