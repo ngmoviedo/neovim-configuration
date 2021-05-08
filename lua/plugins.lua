@@ -6,14 +6,13 @@ return require('packer').startup(function()
     use {
 	    'mhinz/vim-startify',
 	    requires = {'kyazdani42/nvim-web-devicons'},
-	    config = [[require('config.startify')]]
+	    -- config = [[require('config.startify')]]
 	}
 
     -- LaTeX edition
     use {
 	    'lervag/vimtex',
 	    ft = {'tex', 'latex'},
-	    config = [[require('config.vimtex')]]
     }
 
     -- MATLAB edition
@@ -21,7 +20,6 @@ return require('packer').startup(function()
         'ebranlard/vim-matlab-behave',
         requires = {{'vim-scripts/MatlabFilesEdition', ft = {'matlab'}}},
         ft = {'matlab'},
-	    config = [[require('config.matlab_behave')]]
     }
 
     -- Pandoc edition
@@ -35,10 +33,7 @@ return require('packer').startup(function()
     use {'dag/vim-fish', ft = {'fish', 'conf'}} -- neovim detects files with fish extension as config files
 
     -- Autocompletion, lsp, snippets, treesitter...
-    use {
-        'neovim/nvim-lspconfig',
-        config = [[require('config.lsp')]],
-    }
+    use 'neovim/nvim-lspconfig'
 
     use {
 	    'onsails/lspkind-nvim',
@@ -49,22 +44,20 @@ return require('packer').startup(function()
         'hrsh7th/nvim-compe',
         requires = {
 		'SirVer/ultisnips', 'honza/vim-snippets',
-		'windwp/nvim-autopairs'
 	    },
-        config = [[require('config.autocompletion')]]
     }
+
+    use 'windwp/nvim-autopairs'
 
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate', -- Updates the parsers on upgrade
-        config = [[require('config.treesitter')]]
     }
 
     -- Indent guides
     use {
         'lukas-reineke/indent-blankline.nvim',
         branch = 'lua',
-        config = [[require('config.indent')]]
     }
 
     -- Autoclose and pairs matching
@@ -77,47 +70,33 @@ return require('packer').startup(function()
     use 'tpope/vim-repeat'
 
     -- Comfortable motions
-    use {
-        'justinmk/vim-sneak',
-	    config = [[require('config.sneak')]]
-    }
+    use 'justinmk/vim-sneak'
 
     -- Line numbering
-    use {
-        'jeffkreeftmeijer/vim-numbertoggle',
-        config = [[require('config.numbertoggle')]]
-    }
+    use 'jeffkreeftmeijer/vim-numbertoggle'
 
     -- Fade inactive buffers
     use 'TaDaa/vimade'
 
     -- Netrw improvements
-    use {
-        'tpope/vim-vinegar',
-        config = [[require('config.netrw')]]
-    }
+    use 'tpope/vim-vinegar'
 
     -- Status and buffer line
     use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
-        config = [[require('config.lualine')]]
     }
 
     use {
         'akinsho/nvim-bufferline.lua',
         requires = {'kyazdani42/nvim-web-devicons'},
-        config = [[require('config.bufferline')]]
     }
 
     -- Color schemes
     use {'dracula/vim', as = 'dracula'}
 
     -- Floating terminal
-    use {
-        'voldikss/vim-floaterm',
-        config = [[require('config.floaterm')]]
-    }
+    use 'voldikss/vim-floaterm'
 
     -- Git integration
     use 'tpope/vim-fugitive'
