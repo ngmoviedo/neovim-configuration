@@ -1,3 +1,4 @@
 .netrwhist
-vscodium/
 plugin/packer_compiled.vim
+spell/*
+!*.add
