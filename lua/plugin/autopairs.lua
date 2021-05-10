@@ -24,5 +24,6 @@ npairs.add_rules({
     Rule('\\left\\{','\\right\\}',{"tex", "latex"}),
     Rule('\\left\\langle','\\right\\rangle',{"tex", "latex"}),
     Rule('\\langle','\\rangle',{"tex", "latex"}),
+    Rule('\\|','\\|',{"tex","latex"}),
     Rule('*','*',{"pandoc","markdown"})
 })

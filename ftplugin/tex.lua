@@ -1,5 +1,4 @@
 -- Dictionary and spell checking
--- vim.api.nvim_win_set_option(0, 'spell', true) -- Window local option
 vim.cmd('setlocal spell')
 vim.api.nvim_buf_set_option(0, 'spelllang', 'es')
 
