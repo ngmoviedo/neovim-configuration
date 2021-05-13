@@ -32,7 +32,14 @@ local on_attach = function(client, bufnr)
                    opts)
     buf_set_keymap('n', '<space>D',
                    '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    if client.resolved_capabilities.rename then
+        buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',
+                       opts)
+    else
+        -- Simpler non-LSP way of renaming words
+        buf_set_keymap('n', '<space>rn', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]],
+                       {noremap = true})
+    end
     buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
                    opts)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -78,8 +85,7 @@ local lspconfig = require 'lspconfig'
 require'lspconfig'.texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern {".gitmodules"} or
-        lspconfig.util.root_pattern {".git"}
+    root_dir = lspconfig.util.root_pattern {".git/"}
 }
 
 -- bash
@@ -99,7 +105,8 @@ require'lspconfig'.jedi_language_server.setup {
 -- vimls
 require'lspconfig'.vimls.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    root_dir = lspconfig.util.root_pattern {".git"}
 }
 
 -- Lua
@@ -110,6 +117,7 @@ local sumneko_binary = '/usr/bin/lua-language-server'
 require'lspconfig'.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    root_dir = lspconfig.util.root_pattern {".git"},
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {
         Lua = {
@@ -178,11 +186,10 @@ require"lspconfig".efm.setup {
                     formatCommand = "pandoc -f markdown -t markdown -sp --tab-stop=2"
                 }
             },
-            tex = {{formatCommand = "latexindent"}},
             lua = {{formatCommand = "lua-format -i", formatStdin = true}}
         }
     },
-    filetypes = {'matlab', 'fish', 'pandoc', 'tex', 'lua'}
+    filetypes = {'matlab', 'fish', 'pandoc', 'lua'}
 }
 
 -- Diagnostic signs
