@@ -1,5 +1,5 @@
 " MATLAB code checker
-compiler mlint
+autocmd Bufread *.m compiler mlint
 
 " Set commentary string
 setlocal commentstring=\%\ %s

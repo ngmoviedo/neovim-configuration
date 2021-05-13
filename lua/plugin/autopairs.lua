@@ -5,6 +5,15 @@ local Rule = require('nvim-autopairs.rule')
 local cond = require('nvim-autopairs.conds')
 local npairs = require('nvim-autopairs')
 
+-- Vim script
+--- Comments
+npairs.get_rule('"')
+ :with_pair(function()
+    if vim.bo.filetype == 'vim' then
+       return false
+   end
+end)
+
 -- LaTeX
 --- Compatibility with snippets
 npairs.get_rule('('):with_pair(cond.not_before_regex_check("\\"))
