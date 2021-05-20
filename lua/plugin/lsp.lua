@@ -6,69 +6,52 @@ capabilities.textDocument.completion.completionItem.resolveSupport =
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_set_current_dir(client.config.root_dir) -- Go to project's root directory
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+    local function map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function set(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    set('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
     local opts = {noremap = true, silent = true}
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-                   opts)
-    buf_set_keymap('n', '<space>wa',
-                   '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wr',
-                   '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wl',
-                   '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-                   opts)
-    buf_set_keymap('n', '<space>D',
-                   '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>',
+        opts)
+    map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',
+        opts)
+    map('n', '<space>wl',
+        '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+        opts)
+    map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     if client.resolved_capabilities.rename then
-        buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',
-                       opts)
+        map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     else
         -- Simpler non-LSP way of renaming words
-        buf_set_keymap('n', '<space>rn', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]],
-                       {noremap = true})
+        map('n', '<space>rn', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]],
+            {noremap = true})
     end
-    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-                   opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<space>e',
-                   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
-                   opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',
-                   opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',
-                   opts)
-    buf_set_keymap('n', '<space>q',
-                   '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    map('n', '<space>e',
+        '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>",
-                       opts)
+        map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     end
     if client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("v", "<space>f",
-                       "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        map("v", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -80,33 +63,34 @@ end
 
 -- LSP servers
 local lspconfig = require 'lspconfig'
+local util = lspconfig.util
 
 -- Texlab
-require'lspconfig'.texlab.setup {
+lspconfig.texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern {".git/"}
+    root_dir = util.root_pattern {".git/"}
 }
 
 -- bash
-require'lspconfig'.bashls.setup {
+lspconfig.bashls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern {".git"}
+    root_dir = util.root_pattern {".git"}
 }
 
 -- Jedi language server
-require'lspconfig'.jedi_language_server.setup {
+lspconfig.jedi_language_server.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern {".git"}
+    root_dir = util.root_pattern {".git"}
 }
 
 -- vimls
-require'lspconfig'.vimls.setup {
+lspconfig.vimls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern {".git"}
+    root_dir = util.root_pattern {".git"}
 }
 
 -- Lua
@@ -114,10 +98,10 @@ require'lspconfig'.vimls.setup {
 local sumneko_root_path = '/usr/share/lua-language-server'
 local sumneko_binary = '/usr/bin/lua-language-server'
 
-require'lspconfig'.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern {".git"},
+    root_dir = util.root_pattern {".git"},
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {
         Lua = {
@@ -145,10 +129,10 @@ require'lspconfig'.sumneko_lua.setup {
 }
 
 -- Linters and formatters (efm-lang-server)
-require"lspconfig".efm.setup {
+lspconfig.efm.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern {".git"},
+    root_dir = util.root_pattern {".git"},
     init_options = {documentFormatting = true},
     settings = {
         rootMarkers = {".git/"},
@@ -193,7 +177,16 @@ require"lspconfig".efm.setup {
 }
 
 -- Diagnostic signs
-vim.fn.sign_define("LspDiagnosticsSignError", {text = ' '})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ' '})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ' '})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = ' '})
+local sign = vim.fn.sign_define
+
+sign("LspDiagnosticsSignError", {text = ' '})
+sign("LspDiagnosticsSignWarning", {text = ' '})
+sign("LspDiagnosticsSignInformation", {text = ' '})
+sign("LspDiagnosticsSignHint", {text = ' '})
+
+-- Show diagnostics on hover
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+                 {virtual_text = false, underline = true, signs = true})
+vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
+vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]

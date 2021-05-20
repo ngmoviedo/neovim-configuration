@@ -1,6 +1,6 @@
 " Plugins
-lua require('plugins') 
 " Plugin configs are in 'plugin/' and 'lua/plugin/'
+lua require('plugins') 
 
 " Color scheme
 if has('termguicolors')
@@ -20,6 +20,7 @@ set hidden		        " Hide buffers when they are abandoned
 set mouse=a		        " Enable mouse usage (all modes)
 set scrolloff=1		    " Always show at least one line above/below the cursor
 set inccommand=nosplit  " Live preview for substitutions
+set updatetime=300      " For LSP hover messages
 
 " Line numbering (requires numbertoggle plugin)
 set number relativenumber " Enable line numbers

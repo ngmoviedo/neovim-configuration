@@ -1,5 +1,5 @@
 " Disable for certain files and buffers
-let g:indent_blankline_filetype_exclude = ['help', 'startify', 'lspinfo']
+let g:indent_blankline_filetype_exclude = ['help', 'startify', 'lspinfo', 'packer']
 let g:indent_blankline_bufetype_exclude = ['terminal']
 
 " Treesitter and context

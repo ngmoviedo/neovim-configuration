@@ -23,7 +23,8 @@ require'compe'.setup {
         nvim_lua = true,
         spell = true,
         ultisnips = true,
-        treesitter = true
+        treesitter = true,
+        tags = true
     }
 }
 
@@ -34,39 +35,14 @@ vim.g.UltiSnipsListSnippets = "<NUL>"
 vim.g.UltiSnipsJumpForwardTrigger = "<NUL>"
 vim.g.UltiSnipsJumpBackwardTrigger = "<NUL>"
 
-local keymap = vim.api.nvim_set_keymap
+local map = vim.api.nvim_set_keymap
+local opt = {noremap = true, silent = true, expr = true}
 
 -- Compe (autocompletion) mappings
-keymap('i', '<C-Space>', [[compe#complete()]],
-       {noremap = true, silent = true, expr = true})
-keymap('i', '<C-e>', [[compe#close('<C-e>')]],
-       {noremap = true, silent = true, expr = true})
-
--- Make compe#complete compatible with pear-tree
--- keymap('i', '<CR>', [[compe#confirm({ 'keys': "\<Plug>(PearTreeExpand)", 'mode': '' })]], {noremap=true, silent=true, expr=true})
-
--- Make compe compatible with autopairs
-require('nvim-autopairs').setup()
-
-local npairs = require('nvim-autopairs')
-
-_G.MUtils = {}
-
-vim.g.completion_confirm_key = ""
-MUtils.completion_confirm = function()
-    if vim.fn.pumvisible() ~= 0 then
-        if vim.fn.complete_info()["selected"] ~= -1 then
-            return vim.fn["compe#confirm"](npairs.esc("<cr>"))
-        else
-            return npairs.esc("<cr>")
-        end
-    else
-        return npairs.autopairs_cr()
-    end
-end
-
-keymap('i', '<CR>', 'v:lua.MUtils.completion_confirm()',
-       {expr = true, noremap = true})
+map('i', '<C-Space>', [[compe#complete()]], opt)
+map('i', '<CR>',
+    [[compe#confirm(compe#confirm(lexima#expand('<LT>CR>', 'i')))]], opt) -- compatibility with lexima
+map('i', '<C-e>', [[compe#close('<C-e>')]], opt)
 
 -- Use (shift-)tab to:
 --- move to prev/next item in completion menu
@@ -78,25 +54,14 @@ local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
-end
-
 _G.tab_completion = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-n>"
     elseif vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or
         vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
         return t "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>"
-    elseif check_back_space() then
-        return t "<Tab>"
     else
-        return vim.fn['compe#complete']()
+        return t "<Tab>"
     end
 end
 
@@ -109,8 +74,7 @@ _G.shift_tab_completion = function()
         return t "<S-Tab>"
     end
 end
-
-keymap('i', "<Tab>", 'v:lua.tab_completion()', {expr = true})
-keymap('s', "<Tab>", 'v:lua.tab_completion()', {expr = true})
-keymap('i', "<S-Tab>", 'v:lua.shift_tab_completion()', {expr = true})
-keymap('s', "<S-Tab>", 'v:lua.shift_tab_completion()', {expr = true})
+map('i', "<Tab>", 'v:lua.tab_completion()', opt)
+map('s', "<Tab>", 'v:lua.tab_completion()', opt)
+map('i', "<S-Tab>", 'v:lua.shift_tab_completion()', opt)
+map('s', "<S-Tab>", 'v:lua.shift_tab_completion()', opt)

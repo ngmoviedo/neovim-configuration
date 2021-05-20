@@ -3,65 +3,49 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
     -- Startup page
-    use {
-	    'mhinz/vim-startify',
-	    requires = {'kyazdani42/nvim-web-devicons'},
-	    -- config = [[require('config.startify')]]
-	}
+    use 'mhinz/vim-startify'
 
     -- LaTeX edition
-    use {
-	    'lervag/vimtex',
-	    ft = {'tex', 'latex'},
-    }
+    use {'lervag/vimtex', ft = {'tex', 'latex'}}
 
     -- MATLAB edition
-    use {
-        'ebranlard/vim-matlab-behave',
-        requires = {{'vim-scripts/MatlabFilesEdition', ft = {'matlab'}}},
-        ft = {'matlab'},
-    }
+    use {'ebranlard/vim-matlab-behave', ft = {'matlab'}}
 
     -- Pandoc edition
     use {
-        'vim-pandoc/vim-pandoc',
-        requires = {{'vim-pandoc/vim-pandoc-syntax', ft = {'pandoc', 'markdown'}}},
-        ft = {'pandoc','markdown'}
+        {'vim-pandoc/vim-pandoc', ft = {'pandoc', 'markdown'}},
+        {'vim-pandoc/vim-pandoc-syntax', ft = {'pandoc', 'markdown'}}
     }
 
     -- Fish syntax highlighting
-    use {'dag/vim-fish', ft = {'fish', 'conf'}} -- neovim detects files with fish extension as config files
+    use {'dag/vim-fish', ft = {'fish', 'conf'}} -- neovim detects files with fish extension as conf files
 
-    -- Autocompletion, lsp, snippets, treesitter...
-    use 'neovim/nvim-lspconfig'
-
+    -- LSP
     use {
-	    'onsails/lspkind-nvim',
-	    config = function() require('lspkind').init() end
-	}
-
-    use {
-        'hrsh7th/nvim-compe',
-        requires = {
-		'SirVer/ultisnips', 'honza/vim-snippets',
-	    },
+        'neovim/nvim-lspconfig',
+        {
+            'onsails/lspkind-nvim', -- LSP icons
+            config = function() require('lspkind').init() end
+        }
     }
 
-    use 'windwp/nvim-autopairs'
+    -- Autocompletion engine
+    use {'hrsh7th/nvim-compe'}
 
+    -- Snippets
+    use {'SirVer/ultisnips', requires = {'honza/vim-snippets'}}
+
+    -- Autopairs
+    use {'cohama/lexima.vim', 'tpope/vim-surround'}
+
+    -- Treesitter
     use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate', -- Updates the parsers on upgrade
+        {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}, -- Updates the parsers on upgrade
+        'p00f/nvim-ts-rainbow' -- rainbow brackets and parentheses
     }
 
     -- Indent guides
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        branch = 'lua',
-    }
-
-    -- Autoclose and pairs matching
-    use 'tpope/vim-surround'
+    use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'} -- will become the default branch once neovim 0.5 gets released
 
     -- Comments line out
     use 'tpope/vim-commentary'
@@ -76,24 +60,20 @@ return require('packer').startup(function()
     use 'jeffkreeftmeijer/vim-numbertoggle'
 
     -- Fade inactive buffers
-    use 'TaDaa/vimade'
+    use {'TaDaa/vimade', disable = true}
+    use 'sunjon/Shade.nvim'
 
     -- Netrw improvements
     use 'tpope/vim-vinegar'
 
     -- Status and buffer line
-    use {
-        'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
-    }
-
-    use {
-        'akinsho/nvim-bufferline.lua',
-        requires = {'kyazdani42/nvim-web-devicons'},
-    }
+    use {'hoob3rt/lualine.nvim', 'akinsho/nvim-bufferline.lua'}
 
     -- Color schemes
     use {'dracula/vim', as = 'dracula'}
+
+    -- Devicons
+    use 'kyazdani42/nvim-web-devicons'
 
     -- Floating terminal
     use 'voldikss/vim-floaterm'
@@ -107,16 +87,19 @@ return require('packer').startup(function()
         config = function() require('gitsigns').setup() end
     }
 
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    -- FZF integrations
+    use {'junegunn/fzf', 'junegunn/fzf.vim'}
 
-    -- Smooth scrolling
+    -- Colorizer
     use {
-        'karb94/neoscroll.nvim',
-        config = function() require('neoscroll').setup() end
+        'norcalli/nvim-colorizer.lua',
+        config = function() require('colorizer').setup() end
     }
 
+    -- Smooth scrolling
+    use 'psliwka/vim-smoothie'
+
     -- Lua utilities
-    use 'tjdevries/astronauta.nvim'
+    use 'tjdevries/astronauta.nvim' -- allows autoloading files under lua/plugin and writting ftplugin files on lua
 
 end)
