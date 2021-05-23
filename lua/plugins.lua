@@ -36,7 +36,7 @@ return require('packer').startup(function()
     use {'SirVer/ultisnips', requires = {'honza/vim-snippets'}}
 
     -- Autopairs
-    use {'cohama/lexima.vim', 'tpope/vim-surround'}
+    use {{'cohama/lexima.vim', disable = false}, 'tpope/vim-surround'}
 
     -- Treesitter
     use {

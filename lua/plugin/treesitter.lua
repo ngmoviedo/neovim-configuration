@@ -7,9 +7,8 @@
         disable = {"latex"} -- no highlighting for latex
     },
     indent = {enable = true},
-    autopairs = {enable = true},
     rainbow = {enable = true}
 }
 
 -- Vimade compatibility (experimental)
-vim.g.vimade = {enabletreesitter = 1}
+-- vim.g.vimade = {enabletreesitter = 1}
