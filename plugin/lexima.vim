@@ -43,7 +43,7 @@ call lexima#add_rule({'char': '\<Bar>', 'input_after': '\<Bar>', 'filetype': 'te
 call lexima#add_rule({'char': '<BS>', 'at': '\\.\%#\\.', 'input': '<BS><BS>', 'delete': 2, 'filetype': 'tex'})
 call lexima#add_rule({'char': '<Bar>', 'at': '\%#\\\|', 'leave': 2, 'filetype': 'tex'})
 
-" " Pandoc
-call lexima#add_rule({'char': '*', 'input_after': '*', 'filtype': 'pandoc'})
+"" Pandoc
+call lexima#add_rule({'char': '*', 'input_after': '*', 'filetype': 'pandoc'})
 call lexima#add_rule({'char': '*', 'at': '\%#\*', 'leave': 1, 'filetype': 'pandoc'})
 call lexima#add_rule({'char': '<BS>', 'at': '\*\%#\*', 'delete': 1, 'filetype': 'pandoc'})

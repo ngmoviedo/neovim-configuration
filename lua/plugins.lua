@@ -20,6 +20,12 @@ return require('packer').startup(function()
     -- Fish syntax highlighting
     use {'dag/vim-fish', ft = {'fish', 'conf'}} -- neovim detects files with fish extension as conf files
 
+    -- Tridactyl syntax
+    use 'tridactyl/vim-tridactyl'
+
+    -- Firenvim
+    use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+
     -- LSP
     use {
         'neovim/nvim-lspconfig',
@@ -60,8 +66,8 @@ return require('packer').startup(function()
     use 'jeffkreeftmeijer/vim-numbertoggle'
 
     -- Fade inactive buffers
-    use {'TaDaa/vimade', disable = true}
-    use 'sunjon/Shade.nvim'
+    use {'TaDaa/vimade', disable = false}
+    use {'sunjon/Shade.nvim', disable = true}
 
     -- Netrw improvements
     use 'tpope/vim-vinegar'

@@ -23,7 +23,7 @@ require'compe'.setup {
         nvim_lua = true,
         spell = true,
         ultisnips = true,
-        treesitter = true,
+        treesitter = false,
         tags = true
     }
 }
@@ -41,7 +41,7 @@ local opt = {noremap = true, silent = true, expr = true}
 -- Compe (autocompletion) mappings
 map('i', '<C-Space>', [[compe#complete()]], opt)
 map('i', '<CR>',
-    [[compe#confirm(compe#confirm(lexima#expand('<LT>CR>', 'i')))]], opt) -- compatibility with lexima
+    [[compe#confirm(lexima#expand('<LT>CR>', 'i'))]], opt) -- compatibility with lexima
 map('i', '<C-e>', [[compe#close('<C-e>')]], opt)
 
 -- Use (shift-)tab to:

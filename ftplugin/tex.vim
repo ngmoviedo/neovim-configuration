@@ -38,13 +38,9 @@ let g:vimtex_syntax_nospell_commands = [
             \'sisetup',
             \'pagestyle',
             \'newtheorem',
-            \'newtheorem*',
             \'theoremstyle',
             \'numberwithin',
             \'crefformat',
-            \'graphicspath{',
-            \'import{tablas/}'
-            \]
+            \'import'
+        \]
 
-" Reload fls on enter
-autocmd BufEnter *.tex silent! VimtexReload
