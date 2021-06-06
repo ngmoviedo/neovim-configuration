@@ -15,27 +15,23 @@ call lexima#add_rule({'char': '$', 'at': '\w\%#\$', 'leave': 1, 'filetype': 'tex
 call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'tex'})
 
 " Adjustable brackets and parentheses
-call lexima#add_rule({'char': '\left(', 'input_after': '\right)', 'filetype': 'tex'})
 call lexima#add_rule({'char': '\(', 'input': '\left(', 'input_after': '\right)', 'filetype': 'tex'})
 call lexima#add_rule({'char': ')', 'at': '\%#\\right)', 'input': '<Right><Right><Right><Right><Right><Right><Right><Right>', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\\left(\%#\\right)', 'input': '<BS><BS><BS><BS><BS><BS><Del><Del><Del><Del><Del><Del><Del>', 'filetype': 'tex'})
 
-call lexima#add_rule({'char': '\left[', 'input_after': '\right]', 'filetype': 'tex'})
 call lexima#add_rule({'char': '\[', 'input': '\left[', 'input_after': '\right]', 'filetype': 'tex'})
 call lexima#add_rule({'char': ']', 'at': '\%#\\right\]', 'input': '<Right><Right><Right><Right><Right><Right><Right><Right>', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\\left\[\%#\\right\]', 'input': '<BS><BS><BS><BS><BS><BS><Del><Del><Del><Del><Del><Del><Del>', 'filetype': 'tex'})
 
-call lexima#add_rule({'char': '\left\{', 'input_after': '\right\}', 'filetype': 'tex'})
 call lexima#add_rule({'char': '\{', 'input': '\left\{', 'input_after': '\right\}', 'filetype': 'tex'})
 call lexima#add_rule({'char': '}', 'at': '\%#\\right\\}', 'input': '<Right><Right><Right><Right><Right><Right><Right><Right><Right>', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\\left\\{\%#\\right\\}', 'input': '<BS><BS><BS><BS><BS><BS><BS><Del><Del><Del><Del><Del><Del><Del><Del>', 'filetype': 'tex'})
 
 " Scalar product
-call lexima#add_rule({'char': '\langle', 'input_after': '\rangle', 'filetype': 'tex'})
 call lexima#add_rule({'char': '\<', 'input': '\langle', 'input_after': '\rangle', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\\langle\%#\\rangle', 'input': '<BS><BS><BS><BS><BS><BS><BS><Del><Del><Del><Del><Del><Del><Del>', 'filetype': 'tex'})
 
-call lexima#add_rule({'char': '\left\langle', 'input_after': '\right\rangle', 'filetype': 'tex'})
+call lexima#add_rule({'char': '\l<', 'input':'\left\langle', 'input_after': '\right\rangle', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\\left\\langle\%#\\right\\rangle', 'input': '<BS><BS><BS><BS><BS><BS><BS><BS><BS><BS><BS><BS><Del><Del><Del><Del><Del><Del><Del><Del><Del><Del><Del><Del><Del>', 'filetype': 'tex'})
 
 " Norm

@@ -38,9 +38,12 @@ let g:vimtex_syntax_nospell_commands = [
             \'sisetup',
             \'pagestyle',
             \'newtheorem',
+            \'newtheorem\*',
             \'theoremstyle',
             \'numberwithin',
+            \'cref',
             \'crefformat',
-            \'import'
+            \'import',
+            \'thispagestyle'
         \]
 

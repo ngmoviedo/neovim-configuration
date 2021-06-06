@@ -1,0 +1,411 @@
+{
+	"subscript": {
+		"prefix": "__",
+		"body": "_{${1:${TM_SELECTED_TEXT}}}",
+		"description": "subscript"
+	},
+    "subscript2": {
+        "prefix": "_",
+        "body": "_{${1:${TM_SELECTED_TEXT}}}",
+        "description": "subscript"
+    },
+	"superscript": {
+		"prefix": "**",
+		"body": "^{${1:${TM_SELECTED_TEXT}}}",
+		"description": "superscript"
+	},
+	"superscript2": {
+		"prefix": "^",
+		"body": "^{${1:${TM_SELECTED_TEXT}}}",
+		"description": "superscript"
+	},
+    "frac": {
+        "prefix": "//",
+        "body": "\\frac{$1}{$2}$0",
+        "description": "fraction"
+    },
+    "real": {
+        "prefix": "RR",
+        "body": "\\mathbb{R}",
+        "description": "real numbers"
+    },
+    "rational": {
+        "prefix": "QQ",
+        "body": "\\mathbb{Q}",
+        "description": "rational numbers"
+    },
+    "complex": {
+        "prefix": "CC",
+        "body": "\\mathbb{C}",
+        "description": "complex numbers"
+    },
+    "natural": {
+        "prefix": "NN",
+        "body": "\\mathbb{N}",
+        "description": "natural numbers"
+    },
+    "entire": {
+        "prefix": "ZZ",
+        "body": "\\mathbb{Z}",
+        "description": "entire numbers"
+    },
+
+    "leq": {
+        "prefix" : "<=",
+        "body": "\\leq",
+        "description": "less or equal"
+    },
+    "geq": {
+        "prefix": ">=",
+        "body": "\\geq",
+        "description": "greater or equal"
+    },
+    "gg": {
+        "prefix": ">>",
+        "body": "\\gg",
+        "description": "much greater than"
+    },
+    "ll": {
+        "prefix": "<<",
+        "body": "\\ll",
+        "description": "much less than"
+    },
+
+    "int": {
+        "prefix": "int",
+        "body": "\\int_{$1}^{$2}${0:${TM_SELECTED_TEXT}}",
+        "description": "integral"
+    },
+    "iint": {
+        "prefix": "iint",
+        "body": "\\int_{-\\infty}^{+\\infty}${0:${TM_SELECTED_TEXT}}",
+        "description": "infinite integral"
+    },
+    "sum": {
+        "prefix": "sum",
+        "body": "\\sum_{${1:k}=${2:0}}^{$3}${0:${TM_SELECTED_TEXT}}",
+        "description": "sum"
+    },
+    "isum": {
+        "prefix": "isum",
+        "body": "\\sum_{${1:k}=${2:0}}^{\\infty}${0:${TM_SELECTED_TEXT}}",
+        "description": "infinite sum"
+    },
+    "iisum": {
+        "prefix": "iisum",
+        "body": "\\sum_{${1:k}=-\\infty}^{+\\infty}${0:${TM_SELECTED_TEXT}}",
+        "description": "infinite sum both ways"
+    },
+    "lim": {
+        "prefix": "lim",
+        "body": "\\lim_{${1:n}\\to $2}${0:${TM_SELECTED_TEXT}}",
+        "description": "limit"
+    },
+    "infinity": {
+        "prefix": "oo",
+        "body": "\\infty",
+        "description": "infinity symbol"
+    },
+
+    "environment": {
+        "prefix": "begin",
+        "body": "\\begin{$1}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{$1}",
+        "description": "create environment"
+    },
+    "equation": {
+        "prefix": "eq",
+		"body": "\\begin{equation}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{equation}",
+		"description": "equation environment"
+    },
+	"equation*": {
+		"prefix": "eq*",
+		"body": "\\begin{equation*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{equation*}",
+		"description": "equation* environment"
+	},
+	"align": {
+		"prefix": "al",
+		"body": "\\begin{align}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{align}",
+		"description": "align environment"
+	},
+	"align*": {
+		"prefix": "al*",
+		"body": "\\begin{align*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{align*}",
+		"description": "align* environment"
+	},
+	"theorem": {
+		"prefix": "thm",
+		"body": "\\begin{thm}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{thm}",
+		"description": "thm environment"
+	},
+	"theorem*": {
+		"prefix": "thm*",
+		"body": "\\begin{thm*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{thm*}",
+		"description": "thm* environment"
+	},
+	"proposition": {
+		"prefix": "prop",
+		"body": "\\begin{prop}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{prop}",
+		"description": "prop environment"
+	},
+	"proposition*": {
+		"prefix": "prop*",
+		"body": "\\begin{prop*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{prop*}",
+		"description": "prop* environment"
+	},
+	"definition": {
+		"prefix": "defn",
+		"body": "\\begin{defn}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{defn}",
+		"description": "defn environment"
+	},
+	"definition*": {
+		"prefix": "defn*",
+		"body": "\\begin{defn*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{defn*}",
+		"description": "defn* environment"
+	},
+	"lemma": {
+		"prefix": "lem",
+		"body": "\\begin{lem}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{lem}",
+		"description": "lem environment"
+	},
+	"lemma*": {
+		"prefix": "lem*",
+		"body": "\\begin{lem*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{lem*}",
+		"description": "lem* environment"
+	},
+	"corolary": {
+		"prefix": "cor",
+		"body": "\\begin{cor}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{cor}",
+		"description": "cor environment"
+	},
+	"corolary*": {
+		"prefix": "cor*",
+		"body": "\\begin{cor*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{cor*}",
+		"description": "cor* environment"
+	},
+	"remark": {
+		"prefix": "obs",
+		"body": "\\begin{obs}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{obs}",
+		"description": "obs environment"
+	},
+	"remark*": {
+		"prefix": "obs*",
+		"body": "\\begin{obs*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{obs*}",
+		"description": "obs* environment"
+	},
+	"example": {
+		"prefix": "ej",
+		"body": "\\begin{ej}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{ej}",
+		"description": "ej environment"
+	},
+	"example*": {
+		"prefix": "ej*",
+		"body": "\\begin{ej*}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{ej*}",
+		"description": "ej* environment"
+	},
+	"itemize": {
+		"prefix": "item",
+		"body": "\\begin{itemize}\n\t\\item ${0:${TM_SELECTED_TEXT}}\n\\end{itemize}",
+		"description": "itemize environment"
+	},
+	"enumerate": {
+		"prefix": "enum",
+		"body": "\\begin{enumerate}[label=${1:\\arabic*}]\n\t\\item ${0:${TM_SELECTED_TEXT}}\n\\end{enumerate}",
+		"description": "enumerate environment"
+	},
+	"split": {
+		"prefix": "spl",
+		"body": "\\begin{split}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{split}",
+		"description": "split environment"
+	},
+	"cases": {
+		"prefix": "cases",
+		"body": "\\begin{cases}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{cases}",
+		"description": "cases environment"
+	},
+	"frame": {
+		"prefix": "frame",
+		"body": "\\begin{frame}\n\t\\frametitle{${1:<title>}}\n\t\\framesubtitle{${2:<subtitle>}}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{frame}",
+		"description": "frame"
+	},
+    "block": {
+        "prefix": "block",
+        "body": "\\begin{block}{${1:<title>}}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{block}",
+        "description": "block environment"
+    },
+    "example_block": {
+        "prefix": "eblock",
+        "body": "\\begin{exampleblock}{${1:<title>}}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{exampleblock}",
+        "description": "exampleblock environment"
+    },
+    "alert_block": {
+        "prefix": "ablock",
+        "body": "\\begin{alertblock}{${1:<title>}}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{alertblock}",
+        "description": "alertblock environment"
+    },
+	"figure": {
+		"prefix": "figure",
+		"body": "\\begin{figure}[${1:htbp}]\n\t\\centering\n\t\\includegraphics[width=${2:\\textwidth}]{${0:${TM_SELECTED_TEXT}}}\n\t\\caption{${3:<caption>}}\n\t\\label{${4:<label>}}\n\\end{figure}",
+		"description": "figure"
+	},
+	"table": {
+		"prefix": "table",
+		"body": "\\begin{table}[${1:htbp}]\n\t\\centering\\begin{tabular}{${4:<columns>}}\n\t\t${0:${TM_SELECTED_TEXT}}\n\t\\end{tabular}\n\t\\caption{${2:<caption>}}\n\t\\label{${3:<label>}}\n\\end{table}",
+		"description": "table"
+	},
+    "import_table": {
+        "prefix": "itable",
+        "body": "\\begin{table}[${1:htbp}]\n\t\\centering\n\t\\import{${2:tablas/}}{${0:${TM_SELECTED_TEXT}}}\n\t\\caption{${3:<caption>}}\n\t\\label{${4:<label>}}\n\\end{table}",
+        "description": "import table from external file"
+    },
+
+    "spanish": {
+        "prefix": "spanish",
+        "body": [
+            "% Escritura de acentos:",
+            "%--------------------------------------------------------------------------",
+            "\\usepackage[utf8]{inputenc}",
+            "\\usepackage[T1]{fontenc}\n",
+            "% Selección de idioma (español)",
+            "%--------------------------------------------------------------------------",
+            "\\usepackage[spanish,es-tabla,es-lcroman]{babel}"
+        ],
+        "description": "basic settings for writting in Spanish"
+    },
+    "dimensions": {
+        "prefix": "DIM",
+        "body": [
+            "% Dimensiones de página y longitudes de espaciado",
+            "%--------------------------------------------------------------------------",
+            "\\usepackage[a4paper,includeheadfoot,margin=${1:2.50cm},headheight=${2:15pt}]{geometry}",
+            "\\usepackage{setspace}",
+            "\\usepackage{parskip}",
+            "\\parindent=${3:1.5em}\n$0"
+        ],
+        "description": "document dimensions"
+    },
+    "fancy_headers": {
+        "prefix": "fancy",
+        "body": [
+            "% Encabezado y pie de página",
+            "%--------------------------------------------------------------------------",
+            "\\usepackage{fancyhdr}\n",
+            "\\pagestyle{fancy}",
+            "\\fancyhf{}",
+            "\\fancyfoot[LE,RO]{\\thepage}",
+            "\\chead{\\leftmark}"
+        ],
+        "description": "header and foot for two-sided document"
+    },
+    "AMS": {
+        "prefix": "AMS",
+        "body": [
+            "% Paquetes de la AMS",
+            "%--------------------------------------------------------------------------",
+            "\\usepackage{amsmath}",
+            "\\usepackage{amsfonts}",
+            "\\usepackage{amssymb}",
+            "\\usepackage{amsthm}"
+        ],
+        "description": "AMS's packages"
+    },
+    "theorems_def": {
+        "prefix": "thmdef",
+        "body": [
+            "% Teoremas",
+            "%--------------------------------------------------------------------------",
+            "\\newtheorem{thm}{Teorema}[section]",
+            "\\newtheorem*{thm*}{Teorema}",
+            "\\crefformat{thm}{teorema~(#2#1#3)}\n",
+            "\\newtheorem{cor}{Corolario}[section]",
+            "\\newtheorem*{cor*}{Corolario}",
+            "\\crefformat{cor}{corolario~(#2#1#3)}\n",
+            "\\newtheorem{lem}{Lema}[section]",
+            "\\newtheorem*{lem*}{Lema}",
+            "\\crefformat{lem}{lema~(#2#1#3)}\n",
+            "\\newtheorem{prop}{Proposición}[section]",
+            "\\newtheorem*{prop*}{Proposición}",
+            "\\crefname{prop}{proposición}{proposiciones}",
+            "\\crefformat{prop}{proposición~(#2#1#3)}\n",
+            "\\theoremstyle{definition}",
+            "\\newtheorem{defn}{Definición}[section]",
+            "\\newtheorem*{defn*}{Definición}",
+            "\\crefformat{defn}{definición~(#2#1#3)}\n",
+            "\\theoremstyle{remark}",
+            "\\newtheorem{obs}{Observación}[section]",
+            "\\newtheorem*{obs*}{Observación}",
+            "\\crefformat{obs}{observación~(#2#1#3)}",
+            "\\newtheorem{ej}{Ejemplo}[section]",
+            "\\newtheorem*{ej*}{Ejemplo}",
+            "\\crefformat{ej}{ejemplo~(#2#1#3)}"
+        ],
+        "description": "theorem definitions"
+    },
+    "matlab_code": {
+        "prefix": "mcode",
+        "body": [
+            "% Inserción de código",
+            "%--------------------------------------------------------------------------",
+            "\\usepackage[numbered,framed]{matlab-prettifier}",
+            "\\lstset{literate=\n",
+            "\t{á}{{\\'a}}1 {é}{{\\'e}}1 {í}{{\\'i}}1 {ó}{{\\'o}}1 {ú}{{\\'u}}1",
+            "\t{Á}{{\\'A}}1 {É}{{\\'E}}1 {Í}{{\\'I}}1 {Ó}{{\\'O}}1 {Ú}{{\\'U}}1",
+            "\t{à}{{\\`a}}1 {è}{{\\`e}}1 {ì}{{\\`i}}1 {ò}{{\\`o}}1 {ù}{{\\`u}}1",
+            "\t{À}{{\\`A}}1 {È}{{\\'E}}1 {Ì}{{\\`I}}1 {Ò}{{\\`O}}1 {Ù}{{\\`U}}1",
+            "\t{ä}{{\\\"a}}1 {ë}{{\\\"e}}1 {ï}{{\\\"i}}1 {ö}{{\\\"o}}1 {ü}{{\\\"u}}1",
+            "\t{Ä}{{\\\"A}}1 {Ë}{{\\\"E}}1 {Ï}{{\\\"I}}1 {Ö}{{\\\"O}}1 {Ü}{{\\\"U}}1",
+            "\t{â}{{\\^a}}1 {ê}{{\\^e}}1 {î}{{\\^i}}1 {ô}{{\\^o}}1 {û}{{\\^u}}1",
+            "\t{Â}{{\\^A}}1 {Ê}{{\\^E}}1 {Î}{{\\^I}}1 {Ô}{{\\^O}}1 {Û}{{\\^U}}1",
+            "\t{ã}{{\\~a}}1 {ẽ}{{\\~e}}1 {ĩ}{{\\~i}}1 {õ}{{\\~o}}1 {ũ}{{\\~u}}1",
+            "\t{Ã}{{\\~A}}1 {Ẽ}{{\\~E}}1 {Ĩ}{{\\~I}}1 {Õ}{{\\~O}}1 {Ũ}{{\\~U}}1",
+            "\t{œ}{{\\oe}}1 {Œ}{{\\OE}}1 {æ}{{\\ae}}1 {Æ}{{\\AE}}1 {ß}{{\\ss}}1",
+            "\t{ű}{{\\H{u}}}1 {Ű}{{\\H{U}}}1 {ő}{{\\H{o}}}1 {Ő}{{\\H{O}}}1",
+            "\t{ç}{{\\c c}}1 {Ç}{{\\c C}}1 {ø}{{\\o}}1 {å}{{\\r a}}1 {Å}{{\\r A}}1",
+            "\t{€}{{\\euro}}1 {£}{{\\pounds}}1 {«}{{\\guillemotleft}}1",
+            "\t{»}{{\\guillemotright}}1 {ñ}{{\\~n}}1 {Ñ}{{\\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1",
+            "}\n",
+            "\\lstset{style=Matlab-editor,basicstyle=\\mlttfamily}"
+        ],
+        "description": "Matlab code insertion options"
+    },
+    "titlepage": {
+        "prefix": "titlepage",
+        "body": [
+            "% Título, autor, materia y fecha (rellenar)",
+            "%--------------------------------------------------------------------------\n",
+            "\\newcommand{\\titulo}{${1:<titulo>}}",
+            "\\newcommand{\\subtitulo}{${2:<subtitulo>}}\n",
+            "\\newcommand{\\escudo}{${3:<escudo>}}\n",
+            "\\newcommand{\\institucion}{${4:<institucion>}}\n",
+            "\\newcommand{\\autor}{${5:<autor>}}\n",
+            "\\newcommand{\\materia}{${6:<materia>}}\n",
+            "\\newcommand{\\profesor}{${7:<profesor>}}\n",
+            "\\newcommand{\\curso}{${8:<curso>}}\n",
+            "\\newcommand{\\ciudad}{${9:<ciudad>}}\n",
+            "\\newcommand{\\fecha}{${10:<fecha>}}\n",
+            "% Portada",
+            "%----------------------------------------------------------------------\n",
+            "\\begin{titlepage}\n",
+            "    \\centering\n",
+            "    \\includegraphics[width=0.5\\textwidth]{\\escudo}\\par\\vspace{0.2cm}\n",
+            "    {\\scshape\\LARGE \\institucion}\\par\n",
+            "    \\vspace{2.5cm}\n",
+            "    {\\huge\\bfseries \\titulo}\\par\n"	,
+            "    {\\Large\\bfseries \\subtitulo}\\par\n",
+            "    \\vspace{1.5cm}\n",
+            "    {\\Large \\textit{\\materia}\\par (curso académico \\curso)}\\par\n",
+            "    {\\Large\\itshape presentado por}\\par",
+            "    \\vspace{.25cm}\n",
+            "    {\\Large \\autor}\\par",
+            "    \\vspace{1cm}\n",
+            "    {\\Large  tutorado por}\\par",
+            "    {\\Large \\scshape \\profesor}\\par",
+            "    \\vfill\n",
+            "    \\textsc{\\ciudad}\\par\n",
+            "    \\fecha\n",
+            "\\end{titlepage}\n",
+            "% Dejamos la siguiente página en blanco y sin numerar:\n",
+            "\\clearpage\\thispagestyle{empty}\\mbox{}\\setcounter{page}{0}\\clearpage\n$0"
+        ],
+        "description": "Spanish titlepage"
+    }
+}

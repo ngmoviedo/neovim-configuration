@@ -24,12 +24,14 @@ return require('packer').startup(function()
     use 'tridactyl/vim-tridactyl'
 
     -- Firenvim
-    use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end
+    }
 
     -- LSP
     use {
-        'neovim/nvim-lspconfig',
-        {
+        'neovim/nvim-lspconfig', {
             'onsails/lspkind-nvim', -- LSP icons
             config = function() require('lspkind').init() end
         }
@@ -39,10 +41,11 @@ return require('packer').startup(function()
     use {'hrsh7th/nvim-compe'}
 
     -- Snippets
-    use {'SirVer/ultisnips', requires = {'honza/vim-snippets'}}
+    use {'SirVer/ultisnips', requires = {'honza/vim-snippets'}, disable = true}
+    use {'hrsh7th/vim-vsnip', requires = {'hrsh7th/vim-vsnip-integ'}}
 
     -- Autopairs
-    use {{'cohama/lexima.vim', disable = false}, 'tpope/vim-surround'}
+    use {'cohama/lexima.vim', 'tpope/vim-surround'}
 
     -- Treesitter
     use {
@@ -66,8 +69,7 @@ return require('packer').startup(function()
     use 'jeffkreeftmeijer/vim-numbertoggle'
 
     -- Fade inactive buffers
-    use {'TaDaa/vimade', disable = false}
-    use {'sunjon/Shade.nvim', disable = true}
+    use 'TaDaa/vimade'
 
     -- Netrw improvements
     use 'tpope/vim-vinegar'
