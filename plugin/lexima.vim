@@ -23,7 +23,7 @@ call lexima#add_rule({'char': '\[', 'input': '\left[', 'input_after': '\right]',
 call lexima#add_rule({'char': ']', 'at': '\%#\\right\]', 'input': '<Right><Right><Right><Right><Right><Right><Right><Right>', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\\left\[\%#\\right\]', 'input': '<BS><BS><BS><BS><BS><BS><Del><Del><Del><Del><Del><Del><Del>', 'filetype': 'tex'})
 
-call lexima#add_rule({'char': '\{', 'input': '\left\{', 'input_after': '\right\}', 'filetype': 'tex'})
+call lexima#add_rule({'char': '\{', 'except': '\\left\%#', 'input': '\left\{', 'input_after': '\right\}', 'filetype': 'tex'})
 call lexima#add_rule({'char': '}', 'at': '\%#\\right\\}', 'input': '<Right><Right><Right><Right><Right><Right><Right><Right><Right>', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\\left\\{\%#\\right\\}', 'input': '<BS><BS><BS><BS><BS><BS><BS><Del><Del><Del><Del><Del><Del><Del><Del>', 'filetype': 'tex'})
 

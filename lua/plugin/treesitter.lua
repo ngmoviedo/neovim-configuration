@@ -1,6 +1,7 @@
 ﻿require'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        "bash", "fish", "regex", "lua", "latex", "python", "html", "css", "typescript", "yaml"
+        "bash", "fish", "regex", "lua", "latex", "bibtex", "python", "html",
+        "css", "typescript", "yaml"
     },
     highlight = {
         enable = true,
@@ -11,4 +12,4 @@
 }
 
 -- Vimade compatibility (experimental)
--- vim.g.vimade = {enabletreesitter = 1}
+vim.g.vimade = {enabletreesitter = 1}

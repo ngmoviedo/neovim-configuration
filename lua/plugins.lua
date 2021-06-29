@@ -21,7 +21,7 @@ return require('packer').startup(function()
     use {'dag/vim-fish', ft = {'fish', 'conf'}} -- neovim detects files with fish extension as conf files
 
     -- Tridactyl syntax
-    use 'tridactyl/vim-tridactyl'
+    use {'tridactyl/vim-tridactyl', event = 'BufRead,BufNewFile tridactylrc'}
 
     -- Firenvim
     use {
@@ -38,7 +38,7 @@ return require('packer').startup(function()
     }
 
     -- Autocompletion engine
-    use {'hrsh7th/nvim-compe'}
+    use 'hrsh7th/nvim-compe'
 
     -- Snippets
     use {'SirVer/ultisnips', requires = {'honza/vim-snippets'}, disable = true}
@@ -50,7 +50,8 @@ return require('packer').startup(function()
     -- Treesitter
     use {
         {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}, -- Updates the parsers on upgrade
-        'p00f/nvim-ts-rainbow' -- rainbow brackets and parentheses
+        'p00f/nvim-ts-rainbow', -- rainbow brackets and parentheses
+        {'romgrk/nvim-treesitter-context', disable = true}
     }
 
     -- Indent guides
@@ -84,7 +85,8 @@ return require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
 
     -- Floating terminal
-    use 'voldikss/vim-floaterm'
+    use {'voldikss/vim-floaterm', disable = true}
+    use 'akinsho/nvim-toggleterm.lua'
 
     -- Git integration
     use 'tpope/vim-fugitive'

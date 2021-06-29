@@ -4,7 +4,7 @@ let g:firenvim_config = {
     \   '.*': {
     \       'cmdline': 'neovim', 
     \   },
-    \ 'https://www.overleaf.com/*': {
+    \ '*.overleaf.com/*': {
     \   'takeover': 'never',
     \   }
     \ }

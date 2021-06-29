@@ -29,7 +29,7 @@ nnoremap <silent><F5> :VimtexCompile<CR>
 nnoremap <silent><F6> :VimtexErrors<CR>
 
 " Folds
-let g:vimtex_fold_enabled = 1
+" let g:vimtex_fold_enabled = 1
 
 " No spell checking on comments and certain commands
 let g:vimtex_syntax_nospell_comments = 1

@@ -1,0 +1,27 @@
+{
+    "if": {
+        "prefix": "if",
+        "body": "if ${1:<cond>}\n\t${0:${TM_SELECTED_TEXT}}\nend",
+        "description": "if statement"
+    },
+    "if_else": {
+        "prefix": "ife",
+        "body": "if ${1:<cond>}\n\t${2:${TM_SELECTED_TEXT}}\nelse\n\t$0\nend",
+        "description": "if else statement"
+    },
+    "if_elseif": {
+        "prefix": "ifeif",
+        "body":"if ${1:<cond1>}\n\t${2:${TM_SELECTED_TEXT}}\nelseif ${3:<cond2>}\n\t$0\nend",
+        "description": "if elseif statement"
+    },
+    "for": {
+        "prefix": "for",
+        "body": "for ${1:k}=${2:0}:${3:n}\n\t${0:${TM_SELECTED_TEXT}}\nend",
+        "description": "for loop"
+    },
+    "while": {
+        "prefix": "while",
+        "body": "while ${1:<cons>}\n\t${0:${TM_SELECTED_TEXT}}\nend",
+        "description": "while loop"
+    }
+}
