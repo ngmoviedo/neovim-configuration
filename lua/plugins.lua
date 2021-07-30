@@ -41,7 +41,6 @@ return require('packer').startup(function()
     use 'hrsh7th/nvim-compe'
 
     -- Snippets
-    use {'SirVer/ultisnips', requires = {'honza/vim-snippets'}, disable = true}
     use {'hrsh7th/vim-vsnip', requires = {'hrsh7th/vim-vsnip-integ'}}
 
     -- Autopairs
@@ -55,7 +54,7 @@ return require('packer').startup(function()
     }
 
     -- Indent guides
-    use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'} -- will become the default branch once neovim 0.5 gets released
+    use 'lukas-reineke/indent-blankline.nvim'
 
     -- Comments line out
     use 'tpope/vim-commentary'

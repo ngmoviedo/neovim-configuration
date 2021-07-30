@@ -1,8 +1,9 @@
 -- Snippets support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
-capabilities.textDocument.completion.completionItem.resolveSupport =
-    {properties = {'documentation', 'detail', 'additionalTextEdits'}}
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {'documentation', 'detail', 'additionalTextEdits'}
+}
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_set_current_dir(client.config.root_dir) -- Go to project's root directory
@@ -185,8 +186,8 @@ sign("LspDiagnosticsSignInformation", {text = ' '})
 sign("LspDiagnosticsSignHint", {text = ' '})
 
 -- Show diagnostics on hover
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-                 {virtual_text = false, underline = true, signs = true})
-vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
-vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+--     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+--                  {virtual_text = false, underline = true, signs = true})
+-- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
+-- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]

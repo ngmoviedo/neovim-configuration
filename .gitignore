@@ -1,4 +1,5 @@
 .netrwhist
 plugin/packer_compiled.vim
+plugin/packer_compiled.lua
 spell/*
 !*.add
