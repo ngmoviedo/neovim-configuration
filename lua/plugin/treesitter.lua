@@ -1,7 +1,7 @@
 ﻿require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         "bash", "fish", "regex", "lua", "latex", "bibtex", "python", "html",
-        "css", "typescript", "yaml", "java"
+        "css", "typescript", "yaml", "java", "javascript"
     },
     highlight = {
         enable = true,

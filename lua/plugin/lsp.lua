@@ -129,6 +129,40 @@ lspconfig.sumneko_lua.setup {
     }
 }
 
+-- CSS
+require'lspconfig'.cssls.setup {
+    cmd = { "vscode-css-language-server.cmd", "--stdio" },
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+-- HTML
+require'lspconfig'.html.setup {
+    cmd = { "vscode-html-language-server.cmd", "--stdio" },
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+-- Javascript
+require'lspconfig'.denols.setup{
+    cmd = { "deno.exe", "lsp" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    -- root_dir = util.root_pattern(".git"),
+}
+
+-- Formatter (stylelint)
+require'lspconfig'.stylelint_lsp.setup{
+    cmd = { "stylelint-lsp.cmd", "--stdio" },
+    settings = {
+        stylelintplus = {
+            -- see available options in stylelint-lsp documentation
+            autoFixOnFormat = true,
+        }
+    }
+}
+
+
 -- Linters and formatters (efm-lang-server)
 lspconfig.efm.setup {
     on_attach = on_attach,
