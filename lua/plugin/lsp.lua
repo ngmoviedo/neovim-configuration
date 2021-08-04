@@ -130,34 +130,30 @@ lspconfig.sumneko_lua.setup {
 }
 
 -- CSS
-require'lspconfig'.cssls.setup {
-    cmd = { "vscode-css-language-server.cmd", "--stdio" },
+lspconfig.cssls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
 
 -- HTML
-require'lspconfig'.html.setup {
-    cmd = { "vscode-html-language-server.cmd", "--stdio" },
+lspconfig.html.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
 
 -- Javascript
-require'lspconfig'.denols.setup{
-    cmd = { "deno.exe", "lsp" },
+lspconfig.denols.setup{
     on_attach = on_attach,
     capabilities = capabilities,
     -- root_dir = util.root_pattern(".git"),
 }
 
 -- Formatter (stylelint)
-require'lspconfig'.stylelint_lsp.setup{
-    cmd = { "stylelint-lsp.cmd", "--stdio" },
+lspconfig.stylelint_lsp.setup{
     settings = {
         stylelintplus = {
             -- see available options in stylelint-lsp documentation
-            autoFixOnFormat = true,
+            -- autoFixOnFormat = true,
         }
     }
 }
@@ -218,6 +214,27 @@ sign("LspDiagnosticsSignError", {text = ' '})
 sign("LspDiagnosticsSignWarning", {text = ' '})
 sign("LspDiagnosticsSignInformation", {text = ' '})
 sign("LspDiagnosticsSignHint", {text = ' '})
+
+-- Windows specific settings
+if vim.fn.has('win64')==1 then
+    -- CSS
+    lspconfig.cssls.setup {cmd = { "vscode-css-language-server.cmd", "--stdio" }}
+
+    -- HTML
+    lspconfig.html.setup {cmd = { "vscode-html-language-server.cmd", "--stdio" }}
+
+    -- Javascript
+    lspconfig.denols.setup{cmd = { "deno.exe", "lsp" }}
+
+    -- Formatter (stylelint)
+    lspconfig.stylelint_lsp.setup{cmd = { "stylelint-lsp.cmd", "--stdio" }}
+
+    -- efm-langserver
+    -- lspconfig.efm.setup {cmd = { "C:\Users\ngonzame\go\bin\efm-langserver.exe" }}
+
+    -- vimls
+    lspconfig.vimls.setup{cmd = { "vim-language-server.cmd", "--stdio" }}
+end
 
 -- Show diagnostics on hover
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] =
