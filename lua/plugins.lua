@@ -36,6 +36,7 @@ return require('packer').startup(function()
             config = function() require('lspkind').init() end
         }
     }
+    use 'mfussenegger/nvim-jdtls'
 
     -- Autocompletion engine
     use 'hrsh7th/nvim-compe'
