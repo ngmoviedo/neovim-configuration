@@ -148,6 +148,12 @@ lspconfig.denols.setup{
     -- root_dir = util.root_pattern(".git"),
 }
 
+-- Typescript
+lspconfig.tsserver.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+    }
+
 -- Formatter (stylelint)
 lspconfig.stylelint_lsp.setup{
     settings = {
@@ -218,13 +224,16 @@ sign("LspDiagnosticsSignHint", {text = ' '})
 -- Windows specific settings
 if vim.fn.has('win64')==1 then
     -- CSS
-    lspconfig.cssls.setup {cmd = { "vscode-css-language-server.cmd", "--stdio" }}
+    lspconfig.cssls.setup{cmd = { "vscode-css-language-server.cmd", "--stdio" }}
 
     -- HTML
-    lspconfig.html.setup {cmd = { "vscode-html-language-server.cmd", "--stdio" }}
+    lspconfig.html.setup{cmd = { "vscode-html-language-server.cmd", "--stdio" }}
 
     -- Javascript
     lspconfig.denols.setup{cmd = { "deno.exe", "lsp" }}
+
+    -- Typescript
+    lspconfig.tsserver.setup{cmd = { "typescript-language-server.cmd", "--stdio" }}
 
     -- Formatter (stylelint)
     lspconfig.stylelint_lsp.setup{cmd = { "stylelint-lsp.cmd", "--stdio" }}
