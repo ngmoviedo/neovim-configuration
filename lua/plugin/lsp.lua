@@ -129,6 +129,16 @@ lspconfig.sumneko_lua.setup {
     }
 }
 
+-- Java
+vim.api.nvim_exec([[
+    augroup lsp
+        au!
+        if !has('win64')
+            au FileType java lua require('jdtls').start_or_attach({cmd = {'/usr/bin/jdtls'}})
+        end
+    augroup end
+]],false)
+
 -- CSS
 lspconfig.cssls.setup {
     capabilities = capabilities,
