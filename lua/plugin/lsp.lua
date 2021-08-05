@@ -152,17 +152,29 @@ lspconfig.html.setup {
 }
 
 -- Javascript
-lspconfig.denols.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    -- root_dir = util.root_pattern(".git"),
-}
+-- lspconfig.denols.setup{
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     -- root_dir = util.root_pattern(".git"),
+-- }
 
 -- Typescript
 lspconfig.tsserver.setup{
     on_attach = on_attach,
     capabilities = capabilities,
+}
+
+-- JSON
+lspconfig.jsonls.setup {
+    commands = {
+      Format = {
+        function()
+          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+        end
+      }
     }
+}
+
 
 -- Formatter (stylelint)
 lspconfig.stylelint_lsp.setup{
@@ -240,10 +252,13 @@ if vim.fn.has('win64')==1 then
     lspconfig.html.setup{cmd = { "vscode-html-language-server.cmd", "--stdio" }}
 
     -- Javascript
-    lspconfig.denols.setup{cmd = { "deno.exe", "lsp" }}
+    -- lspconfig.denols.setup{cmd = { "deno.exe", "lsp" }}
 
     -- Typescript
     lspconfig.tsserver.setup{cmd = { "typescript-language-server.cmd", "--stdio" }}
+
+    -- JSON
+    lspconfig.jsonls.setup{cmd = { "vscode-json-language-server.cmd", "--stdio" }}
 
     -- Formatter (stylelint)
     lspconfig.stylelint_lsp.setup{cmd = { "stylelint-lsp.cmd", "--stdio" }}
