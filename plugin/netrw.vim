@@ -1,4 +1,6 @@
 " Settings
+let g:nvim_tree_disable_netrw = 0
+let g:nvim_tree_hijack_netrw = 0
 let g:netrw_liststyle = 3 " Tree
 let g:netrw_browse_split = 0 " Open in same bufer (does not affect the drawer)
 let g:netrw_winsize = 20
@@ -26,8 +28,9 @@ lua << EOF
 EOF
 endfunction
 
-nnoremap <silent><F1> :call ToggleNetrw() <CR>
-inoremap <silent><F1> <ESC> :call ToggleNetrw() <CR>
+" nnoremap <silent><F1> :call ToggleNetrw() <CR>
+" inoremap <silent><F1> <ESC> :call ToggleNetrw() <CR>
+nnoremap <F1> :NvimTreeToggle<CR>
 
 " Close on F1 when inside netrw
 augroup netrw_toggle_fix

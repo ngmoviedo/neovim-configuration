@@ -74,6 +74,7 @@ return require('packer').startup(function()
 
     -- Netrw improvements
     use 'tpope/vim-vinegar'
+    use 'kyazdani42/nvim-tree.lua'
 
     -- Status and buffer line
     use {'hoob3rt/lualine.nvim', 'akinsho/nvim-bufferline.lua'}
