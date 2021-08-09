@@ -1,3 +1,4 @@
+if vim.fn.exists('g:vscode')==0 then
 local Terminal = require('toggleterm.terminal').Terminal
 
 -- Floating terminal
@@ -31,3 +32,4 @@ map('t', '<F10>', '<cmd>lua _Vterm_toggle()<CR>', opt)
 
 map('n', '<F11>', '<cmd>lua _Winterm_toggle()<CR>', opt)
 map('t', '<F11>', '<cmd>lua _Winterm_toggle()<CR>', opt)
+end

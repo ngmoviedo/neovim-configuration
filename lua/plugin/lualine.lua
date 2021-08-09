@@ -1,3 +1,4 @@
+if vim.fn.exists('g:vscode')==0 then
 require('lualine').setup {
     options = {theme = 'dracula'},
     extensions = {'fugitive'},
@@ -27,3 +28,4 @@ require('lualine').setup {
         lualine_z = {}
     }
 }
+end

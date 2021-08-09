@@ -1,3 +1,4 @@
+if vim.fn.exists('g:vscode')==0 then
 require'bufferline'.setup{
     options = {
         diagnostics = "nvim_lsp";
@@ -7,3 +8,4 @@ require'bufferline'.setup{
 	end
     },
 }
+end

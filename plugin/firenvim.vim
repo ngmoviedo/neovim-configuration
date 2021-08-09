@@ -1,3 +1,4 @@
+if !exists('g:vscode')
 " Main settings
 let g:firenvim_config = { 
     \ 'localSettings': {
@@ -27,3 +28,4 @@ function! OnUIEnter(event) abort
   endif
 endfunction
 autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+endif

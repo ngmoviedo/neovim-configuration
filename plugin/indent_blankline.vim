@@ -1,3 +1,4 @@
+if !exists('g:vscode')
 " Disable for certain files and buffers
 let g:indent_blankline_filetype_exclude = ['help', 'startify', 'lspinfo', 'packer']
 let g:indent_blankline_bufetype_exclude = ['terminal']
@@ -11,3 +12,4 @@ let g:indent_blankline_context_patterns = [
             \'^object', '^table', 
             \'block', 'arguments'
             \]
+endif

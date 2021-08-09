@@ -1,3 +1,4 @@
+if vim.fn.exists('g:vscode')==0 then
 -- Autocompletion (compe)
 vim.o.completeopt = "menuone,noselect"
 
@@ -96,3 +97,4 @@ end
 
 map("i", "<CR>", "v:lua.snippet_confirm()", {expr = true})
 map("s", "<CR>", "v:lua.snippet_confirm()", {expr = true})
+end

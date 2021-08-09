@@ -1,3 +1,4 @@
+if !exists('g:vscode')
 " Settings
 let g:nvim_tree_disable_netrw = 0
 let g:nvim_tree_hijack_netrw = 0
@@ -37,3 +38,4 @@ augroup netrw_toggle_fix
 	autocmd!
     autocmd filetype netrw noremap <buffer><silent><F1> :let g:NetrwIsOpen=0 <bar> bwipeout<cr>
 augroup END
+endif

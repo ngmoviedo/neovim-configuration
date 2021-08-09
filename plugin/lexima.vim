@@ -1,3 +1,4 @@
+if !exists('g:vscode')
 " Reset
 let g:lexima_no_default_rules = 1
 call lexima#set_default_rules()
@@ -43,3 +44,4 @@ call lexima#add_rule({'char': '<Bar>', 'at': '\%#\\\|', 'leave': 2, 'filetype': 
 call lexima#add_rule({'char': '*', 'input_after': '*', 'filetype': 'pandoc'})
 call lexima#add_rule({'char': '*', 'at': '\%#\*', 'leave': 1, 'filetype': 'pandoc'})
 call lexima#add_rule({'char': '<BS>', 'at': '\*\%#\*', 'delete': 1, 'filetype': 'pandoc'})
+endif
