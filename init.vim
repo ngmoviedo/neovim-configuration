@@ -1,3 +1,5 @@
+" let g:vscode = 1 " For testing purposes
+
 " Plugins
 " Plugin configs are in 'plugin/' and 'lua/plugin/'
 lua require('plugins') 
@@ -51,7 +53,10 @@ if !exists('g:vscode') " The following command don't apply to the VSCode API
     let &t_Cs = "\e[4:3m"
     let &t_Ce = "\e[4:0m"
     hi SpellBad     gui=undercurl guisp=red term=undercurl cterm=undercurl
-
+    
+else
+    let vscode_init_path = stdpath('config').'/vscode/vscode-init.vim'
+    exec 'source '.vscode_init_path
 endif
 
 

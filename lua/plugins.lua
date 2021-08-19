@@ -76,10 +76,7 @@ return require('packer').startup(function()
     }
 
     -- Autopairs
-    use {
-        {'cohama/lexima.vim', opt = false}, -- Doesn't work if optional or conditional
-        {'tpope/vim-surround'}
-    }
+    use {{'cohama/lexima.vim', cond = {novscode}}, {'tpope/vim-surround'}}
     -- Treesitter
     use {
         {
@@ -125,6 +122,7 @@ return require('packer').startup(function()
 
     use {
         'lewis6991/gitsigns.nvim',
+        cond = {novscode},
         requires = {'nvim-lua/plenary.nvim'},
         config = function() require('gitsigns').setup() end
     }
