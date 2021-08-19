@@ -152,13 +152,6 @@ lspconfig.html.setup {
     on_attach = on_attach,
 }
 
--- Javascript
--- lspconfig.denols.setup{
---     on_attach = on_attach,
---     capabilities = capabilities,
---     -- root_dir = util.root_pattern(".git"),
--- }
-
 -- Typescript
 lspconfig.tsserver.setup{
     on_attach = on_attach,
@@ -175,7 +168,6 @@ lspconfig.jsonls.setup {
       }
     }
 }
-
 
 -- Formatter (stylelint)
 lspconfig.stylelint_lsp.setup{
@@ -237,12 +229,12 @@ lspconfig.efm.setup {
 }
 
 -- Diagnostic signs
-local sign = vim.fn.sign_define
+local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 
-sign("LspDiagnosticsSignError", {text = ' '})
-sign("LspDiagnosticsSignWarning", {text = ' '})
-sign("LspDiagnosticsSignInformation", {text = ' '})
-sign("LspDiagnosticsSignHint", {text = ' '})
+for type, icon in pairs(signs) do
+  local hl = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 -- Windows specific settings
 if vim.fn.has('win64')==1 then
@@ -251,9 +243,6 @@ if vim.fn.has('win64')==1 then
 
     -- HTML
     lspconfig.html.setup{cmd = { "vscode-html-language-server.cmd", "--stdio" }}
-
-    -- Javascript
-    -- lspconfig.denols.setup{cmd = { "deno.exe", "lsp" }}
 
     -- Typescript
     lspconfig.tsserver.setup{cmd = { "typescript-language-server.cmd", "--stdio" }}
@@ -271,10 +260,4 @@ if vim.fn.has('win64')==1 then
     lspconfig.vimls.setup{cmd = { "vim-language-server.cmd", "--stdio" }}
 end
 
--- Show diagnostics on hover
--- vim.lsp.handlers["textDocument/publishDiagnostics"] =
---     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
---                  {virtual_text = false, underline = true, signs = true})
--- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
--- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
 end
