@@ -8,7 +8,7 @@ return require('packer').startup(function()
     use {'wbthomason/packer.nvim'}
 
     -- Comments line out
-    use {'tpope/vim-commentary', cond = {novscode}}
+    use 'tpope/vim-commentary'
 
     -- Repeat plugin actions
     use 'tpope/vim-repeat'
@@ -76,7 +76,7 @@ return require('packer').startup(function()
     }
 
     -- Autopairs
-    use {{'cohama/lexima.vim', cond = {novscode}}, {'tpope/vim-surround'}}
+    use {{'cohama/lexima.vim', cond = {novscode}}, 'tpope/vim-surround'}
     -- Treesitter
     use {
         {
@@ -114,7 +114,6 @@ return require('packer').startup(function()
     use {'kyazdani42/nvim-web-devicons', cond = {novscode}}
 
     -- Floating terminal
-    use {'voldikss/vim-floaterm', disable = true, cond = {novscode}}
     use {'akinsho/nvim-toggleterm.lua', cond = {novscode}}
 
     -- Git integration
