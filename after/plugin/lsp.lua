@@ -71,28 +71,24 @@ local util = lspconfig.util
 lspconfig.texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = util.root_pattern {".git/"}
 }
 
 -- bash
 lspconfig.bashls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = util.root_pattern {".git"}
 }
 
--- Jedi language server
-lspconfig.jedi_language_server.setup {
+-- Python language server
+lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = util.root_pattern {".git"}
 }
 
 -- vimls
 lspconfig.vimls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = util.root_pattern {".git"}
 }
 
 -- Lua
@@ -103,7 +99,6 @@ local sumneko_binary = '/usr/bin/lua-language-server'
 lspconfig.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = util.root_pattern {".git"},
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {
         Lua = {
@@ -169,22 +164,10 @@ lspconfig.jsonls.setup {
     }
 }
 
--- Formatter (stylelint)
-lspconfig.stylelint_lsp.setup{
-    settings = {
-        stylelintplus = {
-            -- see available options in stylelint-lsp documentation
-            -- autoFixOnFormat = true,
-        }
-    }
-}
-
-
 -- Linters and formatters (efm-lang-server)
 lspconfig.efm.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = util.root_pattern {".git"},
     init_options = {documentFormatting = true},
     settings = {
         rootMarkers = {".git/"},
@@ -250,14 +233,11 @@ if vim.fn.has('win64')==1 then
     -- JSON
     lspconfig.jsonls.setup{cmd = { "vscode-json-language-server.cmd", "--stdio" }}
 
-    -- Formatter (stylelint)
-    lspconfig.stylelint_lsp.setup{cmd = { "stylelint-lsp.cmd", "--stdio" }}
-
-    -- efm-langserver
-    -- lspconfig.efm.setup {cmd = { "C:\Users\ngonzame\go\bin\efm-langserver.exe" }}
-
     -- vimls
     lspconfig.vimls.setup{cmd = { "vim-language-server.cmd", "--stdio" }}
+
+    -- pyright
+    lspconfig.pyright.setup{cmd = { "pyright.cmd", "--stdio" }}
 end
 
 end

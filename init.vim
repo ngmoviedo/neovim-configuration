@@ -1,7 +1,7 @@
 " let g:vscode = 1 " For testing purposes
 
 " Plugins
-" Plugin configs are in 'plugin/' and 'lua/plugin/'
+" Plugin configs are in 'plugin/' and 'after/plugin/'
 lua require('plugins') 
 
 " Basic settings
@@ -18,6 +18,12 @@ set updatetime=300      " For LSP hover messages
 " Substitutions shortcuts
 nnoremap <c-s> :%s/
 nnoremap <space>s :%s/\<<C-r><C-w>\>/
+
+" Sane clipboard integration and mappings
+inoremap <C-v> <ESC>"+pa
+vnoremap <C-c> "+y
+vnoremap <C-x> "+d
+set clipboard=unnamedplus " Allows yanking and pasting to and from clipboard
 
 if !exists('g:vscode') " The following command don't apply to the VSCode API
     " Color scheme
@@ -37,12 +43,6 @@ if !exists('g:vscode') " The following command don't apply to the VSCode API
     set tabstop=4
     set shiftwidth=4
     set expandtab
-
-    " Sane clipboard integration and mappings
-    inoremap <C-v> <ESC>"+pa
-    vnoremap <C-c> "+y
-    vnoremap <C-x> "+d
-    set clipboard=unnamedplus " Allows yanking and pasting to and from clipboard
 
     " Built-in terminal shortcuts
     command Vterm :vsplit | :terminal
