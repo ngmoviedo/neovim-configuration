@@ -237,7 +237,7 @@ if vim.fn.has('win64')==1 then
     lspconfig.vimls.setup{cmd = { "vim-language-server.cmd", "--stdio" }}
 
     -- pyright
-    lspconfig.pyright.setup{cmd = { "pyright.cmd", "--stdio" }}
+    lspconfig.pyright.setup{cmd = { "pyright-langserver.cmd", "--stdio" }}
 end
 
 end
