@@ -121,9 +121,9 @@ return require('packer').startup(function()
 
     use {
         'lewis6991/gitsigns.nvim',
-        cond = {novscode},
+        -- cond = {novscode}, -- Problematic at updates
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() require('gitsigns').setup() end
+        -- config = function() require('gitsigns').setup() end
     }
 
     -- FZF integrations
