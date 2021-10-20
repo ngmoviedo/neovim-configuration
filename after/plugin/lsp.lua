@@ -96,6 +96,7 @@ lspconfig.vimls.setup {
 local sumneko_root_path = '/usr/share/lua-language-server'
 local sumneko_binary = '/usr/bin/lua-language-server'
 
+if vim.fn.has('win64')==0 then -- Haven't managed to getting it to work under Windows
 lspconfig.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -124,6 +125,7 @@ lspconfig.sumneko_lua.setup {
         }
     }
 }
+end
 
 -- Java
 vim.api.nvim_exec([[
