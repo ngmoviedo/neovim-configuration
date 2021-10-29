@@ -1,6 +1,6 @@
 if vim.fn.exists('g:vscode')==0 then
 require('lualine').setup {
-    options = {theme = 'dracula'},
+    options = {theme = 'dracula-nvim'},
     extensions = {'fugitive'},
     sections = {
         lualine_a = {'mode'},

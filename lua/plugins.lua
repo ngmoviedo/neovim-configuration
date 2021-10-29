@@ -108,7 +108,8 @@ return require('packer').startup(function()
     }
 
     -- Color schemes
-    use {'dracula/vim', as = 'dracula'}
+    -- use {'dracula/vim', as = 'dracula'}
+    use 'Mofiqul/dracula.nvim'
 
     -- Devicons
     use {'kyazdani42/nvim-web-devicons', cond = {novscode}}
@@ -123,6 +124,7 @@ return require('packer').startup(function()
         'lewis6991/gitsigns.nvim',
         -- cond = {novscode}, -- Problematic at updates
         requires = {'nvim-lua/plenary.nvim'},
+        tag = 'release',
         -- config = function() require('gitsigns').setup() end
     }
 
