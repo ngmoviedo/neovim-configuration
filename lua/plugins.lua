@@ -108,8 +108,8 @@ return require('packer').startup(function()
     }
 
     -- Color schemes
-    -- use {'dracula/vim', as = 'dracula'}
-    use 'Mofiqul/dracula.nvim'
+    use {'dracula/vim', as = 'dracula'}
+    -- use 'Mofiqul/dracula.nvim'
 
     -- Devicons
     use {'kyazdani42/nvim-web-devicons', cond = {novscode}}

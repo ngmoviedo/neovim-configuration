@@ -30,8 +30,13 @@ vnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>gv
 " Set buffer name as window title
 set title
 
-"Optional: set custom window title string
+" Optional: set custom window title string
 augroup dirchange
     autocmd!
     autocmd DirChanged * let &titlestring=v:event['cwd']
 augroup END
+
+" cd to home folder
+if has('win64')
+    cd c:/Users/ngonzame
+endif
