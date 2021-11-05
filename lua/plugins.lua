@@ -68,6 +68,9 @@ return require('packer').startup(function()
     -- Autocompletion engine
     use {'hrsh7th/nvim-compe', cond = {novscode}}
 
+    -- Github Copilot
+    use {'github/copilot.vim', cond = {novscode}}
+
     -- Snippets
     use {
         'hrsh7th/vim-vsnip',
