@@ -66,24 +66,17 @@ return require('packer').startup(function()
     use {'mfussenegger/nvim-jdtls', cond = {novscode}}
 
     -- Autocompletion engine
-    -- use {'hrsh7th/nvim-compe', cond = {novscode}}
     use {
-        {'hrsh7th/cmp-nvim-lsp', cond = {novscode}},
-        {'hrsh7th/cmp-buffer', cond = {novscode}},
-        {'hrsh7th/cmp-path', cond = {novscode}},
-        {'hrsh7th/cmp-cmdline', cond = {novscode}},
-        {'hrsh7th/nvim-cmp', cond = {novscode}},
-        {'hrsh7th/cmp-vsnip', condd = {novscode}}
+        'hrsh7th/nvim-cmp',
+        cond = {novscode},
+        requires = {
+            'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-vsnip'
+        }
     }
-
-    -- Github Copilot
-    use {'github/copilot.vim', cond = {novscode}}
 
     -- Snippets
-    use {
-        'hrsh7th/vim-vsnip',
-        cond = {novscode}
-    }
+    use {'hrsh7th/vim-vsnip', cond = {novscode}}
 
     -- Autopairs
     use {{'cohama/lexima.vim', cond = {novscode}}, 'tpope/vim-surround'}
@@ -97,6 +90,9 @@ return require('packer').startup(function()
         {'p00f/nvim-ts-rainbow', cond = {novscode}}, -- rainbow brackets and parentheses
         {'romgrk/nvim-treesitter-context', disable = true, cond = {novscode}}
     }
+
+    -- Github Copilot
+    use {'github/copilot.vim', cond = {novscode}}
 
     -- Indent guides
     use {'lukas-reineke/indent-blankline.nvim', cond = {novscode}}
@@ -119,7 +115,6 @@ return require('packer').startup(function()
 
     -- Color schemes
     use {'dracula/vim', as = 'dracula'}
-    -- use 'Mofiqul/dracula.nvim'
 
     -- Devicons
     use {'kyazdani42/nvim-web-devicons', cond = {novscode}}
@@ -134,7 +129,7 @@ return require('packer').startup(function()
         'lewis6991/gitsigns.nvim',
         -- cond = {novscode}, -- Problematic at updates
         requires = {'nvim-lua/plenary.nvim'},
-        tag = 'release',
+        tag = 'release'
         -- config = function() require('gitsigns').setup() end
     }
 

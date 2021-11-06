@@ -33,7 +33,7 @@ if vim.fn.exists('g:vscode') == 0 then
                 i = cmp.mapping.abort(),
                 c = cmp.mapping.close()
             }),
-            ['<CR>'] = cmp.mapping.confirm({select = true}),
+            ['<CR>'] = cmp.mapping.confirm({select = false}),
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
@@ -70,26 +70,4 @@ if vim.fn.exists('g:vscode') == 0 then
 
     -- Snippet directory
     vim.g.vsnip_snippet_dir = vim.fn.expand('~/.config/nvim/snippets')
-
-    -- Use CR to:
-    --- expand snippet if no option is selected on completion menu
-    --- select completion menu option
-    --- default behaviour if no snippet or completion is selected
-
-    local t = function(key)
-        return vim.api.nvim_replace_termcodes(key, true, true, true)
-    end
-    local map = vim.api.nvim_set_keymap
-
-    _G.snippet_confirm = function()
-        if vim.fn.complete_info()['selected'] == -1 and
-            vim.fn.call("vsnip#expandable", {}) == 0 then
-            return t '<CR>'
-        else
-            cmp.confirm()
-        end
-    end
-
-    map("i", "<CR>", "v:lua.snippet_confirm()", {expr = true})
-    map("s", "<CR>", "v:lua.snippet_confirm()", {expr = true})
 end
