@@ -59,7 +59,6 @@ return require('packer').startup(function()
     use {
         {'neovim/nvim-lspconfig', cond = {novscode}}, {
             'onsails/lspkind-nvim', -- LSP icons
-            config = function() require('lspkind').init() end,
             cond = {novscode}
         }
     }
