@@ -66,7 +66,15 @@ return require('packer').startup(function()
     use {'mfussenegger/nvim-jdtls', cond = {novscode}}
 
     -- Autocompletion engine
-    use {'hrsh7th/nvim-compe', cond = {novscode}}
+    -- use {'hrsh7th/nvim-compe', cond = {novscode}}
+    use {
+        {'hrsh7th/cmp-nvim-lsp', cond = {novscode}},
+        {'hrsh7th/cmp-buffer', cond = {novscode}},
+        {'hrsh7th/cmp-path', cond = {novscode}},
+        {'hrsh7th/cmp-cmdline', cond = {novscode}},
+        {'hrsh7th/nvim-cmp', cond = {novscode}},
+        {'hrsh7th/cmp-vsnip', condd = {novscode}}
+    }
 
     -- Github Copilot
     use {'github/copilot.vim', cond = {novscode}}
@@ -74,7 +82,6 @@ return require('packer').startup(function()
     -- Snippets
     use {
         'hrsh7th/vim-vsnip',
-        requires = {'hrsh7th/vim-vsnip-integ'},
         cond = {novscode}
     }
 

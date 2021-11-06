@@ -1,100 +1,95 @@
-if vim.fn.exists('g:vscode')==0 then
--- Autocompletion (compe)
-vim.o.completeopt = "menuone,noselect"
+if vim.fn.exists('g:vscode') == 0 then
+    vim.o.completeopt = "menu,menuone,noselect"
 
-require'compe'.setup {
-    enabled = true,
-    autocomplete = true,
-    debug = false,
-    min_length = 1,
-    preselect = 'enable',
-    throttle_time = 80,
-    source_timeout = 200,
-    incomplete_delay = 400,
-    max_abbr_width = 100,
-    max_kind_width = 100,
-    max_menu_width = 100,
-    documentation = true,
-
-    source = {
-        path = true,
-        buffer = true,
-        calc = true,
-        nvim_lsp = true,
-        nvim_lua = true,
-        spell = true,
-        vsnip = {kind = "﬌ Snippet"},
-        treesitter = true,
-        tags = true
-    }
-}
-
--- Mappings
-local map = vim.api.nvim_set_keymap
-local opt = {noremap = true, silent = true, expr = true}
-
-map('i', '<C-Space>', [[compe#complete()]], opt)
-map('i', '<C-e>', [[compe#close('<C-e>')]], opt)
-
-local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
--- local check_back_space = function()
---     local col = vim.fn.col('.') - 1
---     if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
---         return true
---     else
---         return false
---     end
--- end
-
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-n>"
-    elseif vim.fn.call("vsnip#available", {1}) == 1 then
-        return t "<Plug>(vsnip-expand-or-jump)"
-    else
-        return t "<Tab>"
+    -- Functions for good tab behaviour
+    local has_words_before = function()
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and
+                   vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
+                       col, col):match("%s") == nil
     end
-end
-_G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-p>"
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        return t "<Plug>(vsnip-jump-prev)"
-    else
-        -- If <S-Tab> is not working in your terminal, change it to <C-h>
-        return t "<S-Tab>"
+
+    local feedkey = function(key, mode)
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true,
+                                                             true), mode, true)
     end
-end
 
-map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+    local cmp = require 'cmp'
+    local lspkind = require 'lspkind'
 
--- Use CR to:
---- expand snippet if no option is selected on completion menu
---- select completion menu option
---- default behaviour if no snippet or completion is selected
-vim.g.vsnip_snippet_dir = vim.fn.expand('~/.config/nvim/snippets')
+    cmp.setup({
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            end
+        },
+        mapping = {
+            ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+            ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+            ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping({
+                i = cmp.mapping.abort(),
+                c = cmp.mapping.close()
+            }),
+            ['<CR>'] = cmp.mapping.confirm({select = true}),
+            ["<Tab>"] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif vim.fn["vsnip#available"](1) == 1 then
+                    feedkey("<Plug>(vsnip-expand-or-jump)", "")
+                elseif has_words_before() then
+                    cmp.complete()
+                else
+                    fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                end
+            end, {"i", "s"}),
 
-_G.snippet_confirm = function()
-    if vim.fn.complete_info()['selected'] == -1 then
-        if vim.fn.call("vsnip#expandable", {}) == 1 then
-            return t "<Plug>(vsnip-expand)"
+            ["<S-Tab>"] = cmp.mapping(function()
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                    feedkey("<Plug>(vsnip-jump-prev)", "")
+                end
+            end, {"i", "s"})
+        },
+        sources = cmp.config.sources({
+            {name = 'nvim_lsp'}, {name = 'vsnip'} -- For vsnip users.
+        }, {{name = 'buffer'}}),
+        formatting = {format = lspkind.cmp_format()}
+    })
+
+    -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline('/', {sources = {{name = 'buffer'}}})
+
+    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline(':', {
+        sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+    })
+
+    -- Snippet directory
+    vim.g.vsnip_snippet_dir = vim.fn.expand('~/.config/nvim/snippets')
+
+    -- Use CR to:
+    --- expand snippet if no option is selected on completion menu
+    --- select completion menu option
+    --- default behaviour if no snippet or completion is selected
+
+    local t = function(key)
+        return vim.api.nvim_replace_termcodes(key, true, true, true)
+    end
+    local map = vim.api.nvim_set_keymap
+
+    _G.snippet_confirm = function()
+        if vim.fn.complete_info()['selected'] == -1 and
+            vim.fn.call("vsnip#expandable", {}) == 0 then
+            return t '<CR>'
         else
-            return vim.fn['lexima#expand']('<CR>', 'i')
+            cmp.confirm()
         end
-    else
-       return vim.fn['compe#confirm']()
     end
-end
 
-map("i", "<CR>", "v:lua.snippet_confirm()", {expr = true})
-map("s", "<CR>", "v:lua.snippet_confirm()", {expr = true})
+    map("i", "<CR>", "v:lua.snippet_confirm()", {expr = true})
+    map("s", "<CR>", "v:lua.snippet_confirm()", {expr = true})
 end
