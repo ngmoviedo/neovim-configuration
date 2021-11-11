@@ -27,7 +27,7 @@ set clipboard=unnamedplus " Allows yanking and pasting to and from clipboard
 
 " Disable Copilot on Tab
 let g:copilot_no_tab_map = v:true
-imap <silent><script><expr> <ç> copilot#Accept()
+imap <silent><script><expr> <C-l> copilot#Accept()
 
 if !exists('g:vscode') " The following command don't apply to the VSCode API
     " Color scheme
