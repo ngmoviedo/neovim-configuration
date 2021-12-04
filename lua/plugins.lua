@@ -1,5 +1,3 @@
-local novscode = function() return vim.fn.exists('g:vscode') == 0 end
-
 -- Only required if you have packer configured as `opt`
 -- vim.cmd [[packadd packer.nvim]]
 
@@ -17,109 +15,103 @@ return require('packer').startup(function()
     use 'justinmk/vim-sneak'
 
     -- Startup page
-    use {'mhinz/vim-startify', cond = {novscode}}
+    use {'mhinz/vim-startify'}
 
     -- LaTeX edition
-    use {'lervag/vimtex', ft = {'tex', 'latex'}, cond = {novscode}}
+    use {'lervag/vimtex', ft = {'tex', 'latex'}}
 
     -- MATLAB edition
-    use {'ebranlard/vim-matlab-behave', ft = {'matlab'}, cond = {novscode}}
+    use {'ebranlard/vim-matlab-behave', ft = {'matlab'}}
 
     -- Pandoc edition
     use {
         {
             'vim-pandoc/vim-pandoc',
             ft = {'pandoc', 'markdown'},
-            cond = {novscode}
         }, {
             'vim-pandoc/vim-pandoc-syntax',
             ft = {'pandoc', 'markdown'},
-            cond = {novscode}
         }
     }
 
     -- Fish syntax highlighting
-    use {'dag/vim-fish', ft = {'fish', 'conf'}, cond = {novscode}} -- neovim detects files with fish extension as conf files
+    use {'dag/vim-fish', ft = {'fish', 'conf'}} -- neovim detects files with fish extension as conf files
 
     -- Tridactyl syntax
     use {
         'tridactyl/vim-tridactyl',
         event = 'BufRead,BufNewFile tridactylrc',
-        cond = {novscode}
     }
 
     -- Firenvim
     use {
         'glacambre/firenvim',
         run = function() vim.fn['firenvim#install'](0) end,
-        cond = {novscode}
     }
 
     -- LSP
     use {
-        {'neovim/nvim-lspconfig', cond = {novscode}}, {
+        {'neovim/nvim-lspconfig'}, {
             'onsails/lspkind-nvim', -- LSP icons
-            cond = {novscode}
         }
     }
-    use {'mfussenegger/nvim-jdtls', cond = {novscode}}
+    use {'mfussenegger/nvim-jdtls'}
 
     -- Autocompletion engine
     use {
-        {'hrsh7th/nvim-cmp',cond = {novscode}},
-        {'hrsh7th/cmp-nvim-lsp', cond = {novscode}}, {'hrsh7th/cmp-buffer', cond = {novscode}}, {'hrsh7th/cmp-path', cond = {novscode}},
-        {'hrsh7th/cmp-cmdline', cond = {novscode}}, {'hrsh7th/cmp-vsnip', cond = {novscode}}
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-nvim-lsp'}, {'hrsh7th/cmp-buffer'}, {'hrsh7th/cmp-path'},
+        {'hrsh7th/cmp-cmdline'}, {'hrsh7th/cmp-vsnip'}
     }
 
     -- Snippets
-    use {'hrsh7th/vim-vsnip', cond = {novscode}}
+    use {'hrsh7th/vim-vsnip'}
 
     -- Autopairs
-    use {{'cohama/lexima.vim', cond = {novscode}}, 'tpope/vim-surround'}
+    use {{'cohama/lexima.vim'}, 'tpope/vim-surround'}
     -- Treesitter
     use {
         {
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate',
-            cond = {novscode}
         }, -- Updates the parsers on upgrade
-        {'p00f/nvim-ts-rainbow', cond = {novscode}}, -- rainbow brackets and parentheses
-        {'romgrk/nvim-treesitter-context', disable = true, cond = {novscode}}
+        {'p00f/nvim-ts-rainbow'}, -- rainbow brackets and parentheses
+        {'romgrk/nvim-treesitter-context', disable = true}
     }
 
     -- Github Copilot
-    use {'github/copilot.vim', cond = {novscode}}
+    use {'github/copilot.vim'}
 
     -- Indent guides
-    use {'lukas-reineke/indent-blankline.nvim', cond = {novscode}}
+    use {'lukas-reineke/indent-blankline.nvim'}
 
     -- Line numbering
-    use {'jeffkreeftmeijer/vim-numbertoggle', cond = {novscode}}
+    use {'jeffkreeftmeijer/vim-numbertoggle'}
 
     -- Fade inactive buffers
-    use {'TaDaa/vimade', cond = {novscode}}
+    use {'TaDaa/vimade'}
 
     -- Netrw improvements
-    use {'tpope/vim-vinegar', cond = {novscode}}
-    use {'kyazdani42/nvim-tree.lua', cond = {novscode}}
+    use {'tpope/vim-vinegar'}
+    use {'kyazdani42/nvim-tree.lua'}
 
     -- Status and buffer line
     use {
-        {'hoob3rt/lualine.nvim', cond = {novscode}},
-        {'akinsho/nvim-bufferline.lua', cond = {novscode}}
+        {'hoob3rt/lualine.nvim'},
+        {'akinsho/nvim-bufferline.lua'}
     }
 
     -- Color schemes
     use {'dracula/vim', as = 'dracula'}
 
     -- Devicons
-    use {'kyazdani42/nvim-web-devicons', cond = {novscode}}
+    use {'kyazdani42/nvim-web-devicons'}
 
     -- Floating terminal
-    use {'akinsho/nvim-toggleterm.lua', cond = {novscode}}
+    use {'akinsho/nvim-toggleterm.lua'}
 
     -- Git integration
-    use {'tpope/vim-fugitive', cond = {novscode}}
+    use {'tpope/vim-fugitive'}
 
     use {
         'lewis6991/gitsigns.nvim',
@@ -131,18 +123,17 @@ return require('packer').startup(function()
 
     -- FZF integrations
     use {
-        {'junegunn/fzf', cond = {novscode}},
-        {'junegunn/fzf.vim', cond = {novscode}}
+        {'junegunn/fzf'},
+        {'junegunn/fzf.vim'}
     }
 
     -- Colorizer
     use {
         'norcalli/nvim-colorizer.lua',
-        cond = {novscode},
         config = function() require('colorizer').setup() end
     }
 
     -- Smooth scrolling
-    use {'psliwka/vim-smoothie', cond = {novscode}}
+    use {'psliwka/vim-smoothie'}
 
 end)

@@ -29,11 +29,13 @@ set clipboard=unnamedplus " Allows yanking and pasting to and from clipboard
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <C-l> copilot#Accept()
 
+" Set termguicolors
+if has('termguicolors')
+    set termguicolors
+endif
+
 if !exists('g:vscode') " The following command don't apply to the VSCode API
     " Color scheme
-    if has('termguicolors')
-        set termguicolors
-    endif
     colorscheme dracula
 
     " Jump to the last position when reopening a file
