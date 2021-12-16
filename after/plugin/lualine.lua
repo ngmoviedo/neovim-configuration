@@ -6,7 +6,7 @@ require('lualine').setup {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff'},
         lualine_c = {
-            {'diagnostics', sources = {'nvim_lsp'}, color_warn = '#ffb86c'},
+            {'diagnostics', sources = {'nvim_diagnostic'}, color_warn = '#ffb86c'},
             -- Displays filename only when window is wider then 80
             {
                 'filename',
